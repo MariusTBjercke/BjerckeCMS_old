@@ -45,7 +45,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (1,'Home','Home','Welcome to Blizzlike CMS.','default','home','Home/home.html.twig','Home',1,0,0,'11'),(2,'Login','Login','Log in to your user account.','default','login','Login/login.html.twig','Login',1,0,1,''),(3,'Register','Register','Register to access our content.','default','register','Register/register.html.twig','Register',1,0,1,NULL),(4,'Forum','Forum','Communicate with other members in our forum.','default','forum','Forum/forum.html.twig','Forum',1,0,0,NULL),(5,'Profile','Profile','User profile page.','default','profile','Profile/profile.html.twig','Profile',1,1,0,'11'),(6,'Admin','Admin','Administration page.','default','admin','Admin/admin.html.twig','Admin',1,1,0,'10'),(7,'PageBuilder','Page Builder','Modify the site pages with the page builder.','default','pagebuilder','PageBuilder/pagebuilder.html.twig','PageBuilder',1,1,0,NULL);
+INSERT INTO `pages` VALUES (1,'Home','Home','Welcome to Blizzlike CMS.','default','home','Home/home.html.twig','Home',1,0,0,'18,17'),(2,'Login','Login','Log in to your user account.','default','login','Login/login.html.twig','Login',1,0,1,''),(3,'Register','Register','Register to access our content.','default','register','Register/register.html.twig','Register',1,0,1,NULL),(4,'Forum','Forum','Communicate with other members in our forum.','default','forum','Forum/forum.html.twig','Forum',1,0,0,NULL),(5,'Profile','Profile','User profile page.','default','profile','Profile/profile.html.twig','Profile',1,1,0,'11'),(6,'Admin','Admin','Administration page.','default','admin','Admin/admin.html.twig','Admin',1,1,0,'10'),(7,'PageBuilder','Page Builder','Modify the site pages with the page builder.','default','pagebuilder','PageBuilder/pagebuilder.html.twig','PageBuilder',1,1,0,NULL);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-10  9:19:08
+-- Dump completed on 2022-05-10 16:07:22

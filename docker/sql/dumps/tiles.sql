@@ -27,8 +27,12 @@ CREATE TABLE `tiles` (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `template_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+  `options` json NOT NULL,
+  `article_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_1C1584BB7294869C` (`article_id`),
+  CONSTRAINT `FK_1C1584BB7294869C` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +41,7 @@ CREATE TABLE `tiles` (
 
 LOCK TABLES `tiles` WRITE;
 /*!40000 ALTER TABLE `tiles` DISABLE KEYS */;
-INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTile'),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPage'),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder');
+INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTile','null',NULL),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPage','null',NULL),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder','null',1),(15,'Single Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','null',1),(16,'Edit Tile','Pages/PageBuilder/edit.html.twig','PageBuilder','[]',NULL),(17,'New Article','Tiles/Articles/New/newarticle.html.twig','NewArticle','[]',NULL),(18,'Front Page Top Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','[]',1);
 /*!40000 ALTER TABLE `tiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-10  9:19:17
+-- Dump completed on 2022-05-10 16:07:30
