@@ -1,0 +1,42 @@
+<div class="container new-tile">
+    <div class="row">
+        <div class="col">
+            <h4>Add new tile</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="new-tile__form">
+                <div class="new-tile__form-input">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" placeholder="Title">
+                </div>
+
+                <div class="new-tile__form-input">
+                    <label for="template">Template path:</label>
+                    <input type="text" id="template" name="template" placeholder="Template path">
+                    <span>Example: Tiles/Articles/Display/articledisplay.html.twig</span>
+                </div>
+
+                <div class="new-tile__form-input">
+                    <label for="class-name">Class name:</label>
+                    <input type="text" id="class-name" name="class-name" placeholder="Class name">
+                    <span>Example: ArticleDisplay (in namespace Bjercke\Tile)</span>
+                </div>
+
+                <div class="new-tile__form-input">
+                    <input type="submit" value="Save" id="submit">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h4>Existing tiles:</h4>
+            <div class="new-tile__spinner"></div>
+            <div class="new-tile__existing-tiles"></div>
+        </div>
+    </div>
+</div>

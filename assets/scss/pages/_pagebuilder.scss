@@ -1,0 +1,129 @@
+@use '../mixins' as mixin;
+
+.pagebuilder {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 15px;
+
+  &__draggable {
+    @include mixin.draggable-bar;
+  }
+
+  &__submit {
+    @include mixin.std-button;
+  }
+
+  &__form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 15px;
+
+    &-title {
+
+      span {
+        color: #578aff;
+        cursor: pointer;
+      }
+    }
+
+    &-tile-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    &-toolbox {
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        div {
+          @include mixin.draggable-bar;
+        }
+      }
+    }
+
+    &-input {
+    }
+  }
+
+  &__edit-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+
+    i {
+      font-size: 0.8em;
+    }
+  }
+
+  &__remove-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #cb1414;
+    cursor: pointer;
+  }
+
+  &__edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  &__builder {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__modal {
+    padding: 2em;
+    z-index: 9999;
+    min-width: 300px;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    &-close {
+      button {
+        @include mixin.std-button;
+        margin-top: 7px;
+      }
+    }
+  }
+
+  &__modal-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__page-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      color: #000000;
+      text-decoration: none;
+      border: none;
+
+      &:hover {
+        color: #578aff;
+      }
+    }
+  }
+}

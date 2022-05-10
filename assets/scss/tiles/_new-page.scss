@@ -1,0 +1,24 @@
+.new-page {
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-input {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      input[type="text"] {
+        min-width: 300px;
+        padding: 5px 10px;
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

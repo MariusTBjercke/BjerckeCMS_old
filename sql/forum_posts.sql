@@ -1,0 +1,1 @@
+CREATE TABLE `forum_posts` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `content` VARCHAR(255) NOT NULL , `author_id` INT(11) NOT NULL , `date` BIGINT(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

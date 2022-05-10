@@ -1,0 +1,24 @@
+{% for article in tile.getArticles(limit) %}
+
+    <article class="article-display">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="article-display__title">
+                        <span>{{ article.getTitle }}</span>
+                    </div>
+                    <div class="article-display__content">
+                        <span>{{ article.getContent|raw }}</span>
+                    </div>
+                    <div class="article-display__author">
+                        <span>Author:</span> <span>{{ article.getAuthor.getUsername }}</span>
+                    </div>
+                    <div class="article-display__date">
+                        <span>Posted:</span> <span>{{ article.getTimeAgo }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+{% endfor %}

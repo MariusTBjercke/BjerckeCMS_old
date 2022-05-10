@@ -1,0 +1,3 @@
+* * * * * echo $(date +\%Y\-\%m\-\%d\ \%H\:\%M) "- Users checked." >> /var/log/cron.log
+* * * * * /usr/local/bin/php /var/www/html/includes/jobs/update_users.php
+# Empty line

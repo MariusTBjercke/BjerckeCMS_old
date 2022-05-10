@@ -1,0 +1,62 @@
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Bjercke\SqlConnection;
+use Doctrine\Migrations\Tools\Console\Command as ConsoleCommand;
+use Doctrine\ORM\Tools\Console\Command as ORMCommand;
+use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
+use Doctrine\Migrations\Configuration\Migration\PhpFile;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+use Doctrine\ORM\Tools\Setup;
+use Dotenv\Dotenv;
+use Symfony\Component\Console\Application;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
+$cli = new Application("BjerckeCMS Console");
+$cli->setCatchExceptions(true);
+
+$config = new PhpFile(__DIR__ . '/../migrations.php');
+
+$connectionParams = SqlConnection::getInstance()->getConnectionParams();
+
+$entityManager = EntityManager::create(
+        $connectionParams,
+        Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../includes/classes/Doctrine/Entity'])
+);
+$entityProvider = new SingleManagerProvider($entityManager);
+
+
+$dependencyFactory = DependencyFactory::fromEntityManager($config, new ExistingEntityManager($entityManager));
+
+$cli->addCommands([
+        new ConsoleCommand\DiffCommand($dependencyFactory),
+        new ConsoleCommand\ExecuteCommand($dependencyFactory),
+        new ConsoleCommand\GenerateCommand($dependencyFactory),
+        new ConsoleCommand\MigrateCommand($dependencyFactory),
+        new ConsoleCommand\StatusCommand($dependencyFactory),
+        new ConsoleCommand\VersionCommand($dependencyFactory),
+
+    // Doctrine ORM
+        new ORMCommand\ClearCache\MetadataCommand(),
+        new ORMCommand\ClearCache\CollectionRegionCommand($entityProvider),
+        new ORMCommand\ClearCache\EntityRegionCommand($entityProvider),
+        new ORMCommand\ClearCache\MetadataCommand($entityProvider),
+        new ORMCommand\ClearCache\QueryCommand($entityProvider),
+        new ORMCommand\ClearCache\QueryRegionCommand($entityProvider),
+        new ORMCommand\ClearCache\ResultCommand($entityProvider),
+        new ORMCommand\SchemaTool\CreateCommand($entityProvider),
+        new ORMCommand\SchemaTool\UpdateCommand($entityProvider),
+        new ORMCommand\SchemaTool\DropCommand($entityProvider),
+        new ORMCommand\GenerateProxiesCommand($entityProvider),
+        new ORMCommand\RunDqlCommand($entityProvider),
+        new ORMCommand\ValidateSchemaCommand($entityProvider),
+        new ORMCommand\InfoCommand($entityProvider),
+        new ORMCommand\MappingDescribeCommand($entityProvider),
+]);
+
+$cli->run();

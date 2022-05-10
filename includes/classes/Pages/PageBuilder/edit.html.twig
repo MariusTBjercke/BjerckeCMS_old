@@ -1,0 +1,19 @@
+{% set editTile = tile.getTileToEdit %}
+{% set currentArticle = tile.getCurrentArticle %}
+
+<div class="pagebuilder__modal-edit-form">
+    <h3>Edit tile: {{ editTile.getTitle }}</h3>
+    <div class="pagebuilder__edit-input">
+        <label for="article-id">Article: </label>
+        <select id="article-id" name="article">
+            <option value="0">None</option>
+            {% for article in tile.getArticles %}
+                <option value="{{ article.getId }}" {% if article.getId == currentArticle.getId %}selected="selected"{% endif %}>{{ article.getTitle }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="pagebuilder__edit-input">
+        <input type="submit" name="edit-submit" id="edit-submit" class="pagebuilder__submit" value="Save">
+        <button class="pagebuilder__submit" id="pagebuilder__modal-edit-close">Close</button>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.billboard {
+
+  &__single-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,26 @@
+{% extends "@grid/page.html.twig" %}
+{% set css = "home" %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            {% if site.getAction == 'success' %}
+                <div class="col profile__login-success">
+                    <div class="profile__alert-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="alert alert-success" role="alert">Account was created!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {{ site.renderPageTiles }}
+
+{% endblock %}

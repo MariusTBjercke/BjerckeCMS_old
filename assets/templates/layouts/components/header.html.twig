@@ -1,0 +1,65 @@
+<nav>
+    <div class="collapsed-navigation">
+        <div class="collapsed-navigation__content">
+            <div class="collapsed-navigation__close">
+                <i class="bi bi-x-circle"></i>
+            </div>
+            <div class="collapsed-navigation__menu-items">
+                {% for item in site.getPages %}
+                    {% if item.navigation %}
+                        {% if site.getCurrentUser.getLoggedIn and item.getHideWhenLoggedIn %}
+                        {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
+                        {% else %}
+                            <a href="{{ item.url }}"
+                               class="collapsed-navigation__item {% if item.url == site.getPageName %}collapsed-navigation__item_active{% endif %}">{{ item.name }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="main-navigation">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        {% if user.getLoggedIn %}
+                            <a href="profile"><i class="bi bi-person-square"></i> {{ user.getUsername }}</a>
+                        {% else %}
+                            <div>You are not signed in.</div>
+                        {% endif %}
+                    </div>
+                    <div class="col text-end">
+                        {% if user.getLoggedIn %}
+                            <a href="logout"><i class="bi bi-door-open"></i> Logout?</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container navigation-wrapper">
+            <div class="row">
+                <div class="col-10 col-md-4">
+                    <div class="top-logo"></div>
+                </div>
+                <div class="col-2 col-md-8">
+                    <div class="navigation">
+                        {% for item in site.getPages %}
+                            {% if item.navigation %}
+                                {% if site.getCurrentUser.getLoggedIn and item.getHideWhenLoggedIn %}
+                                {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
+                                {% else %}
+                                    <a href="{{ site.getUrl(item.url) }}"
+                                       class="navigation__item {% if item.url == site.getPageName %}navigation__item_active{% endif %}">{{ item.name }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="navigation-wrapper__bars">
+                        <i class="bi bi-list"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

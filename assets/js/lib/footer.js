@@ -1,0 +1,3 @@
+up.compiler('footer', function (element) {
+    // Footer related stuff here...
+});

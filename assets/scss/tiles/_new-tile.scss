@@ -1,0 +1,49 @@
+@use '../mixins' as mixin;
+
+.new-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &-input {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        padding: 5px 10px;
+      }
+
+      input[type="submit"] {
+        @include mixin.std-button;
+      }
+    }
+  }
+
+  &__tile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &__spinner {
+    background: url('./../svg/spinners/01.svg') no-repeat center center;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+  }
+
+}

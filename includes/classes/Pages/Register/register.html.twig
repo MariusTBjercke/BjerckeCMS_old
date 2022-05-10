@@ -1,0 +1,34 @@
+{% do redirectIfLoggedIn('home') %}
+{% extends "@grid/page.html.twig" %}
+{% set css = "register" %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Register a new account</h2>
+                <div class="register-form">
+                    <div class="register-form__input">
+                        <div>Username:</div>
+                        <div><input type="text" id="username"></div>
+                    </div>
+                    <div class="register-form__input">
+                        <div>Password:</div>
+                        <div><input type="password" id="password"></div>
+                    </div>
+                    <div class="register-form__input">
+                        <div>Email:</div>
+                        <div><input type="text" id="email"></div>
+                    </div>
+                    <div class="register-form__input">
+                        <input type="submit" id="submit" class="register-form__submit" value="Register">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ site.renderPageTiles }}
+    
+{% endblock %}

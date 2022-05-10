@@ -1,0 +1,29 @@
+{% set user = site.getCurrentUser %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ site.getPageDescription }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tile.getPageTitle }}</title>
+    <link rel="stylesheet" href="{{ site.getAsset('css/style.min.css') }}">
+    <link rel="icon" type="image/png" href="{{ site.getAsset('img/favicon.png') }}">
+</head>
+<body>
+
+{% include '@components/header.html.twig' %}
+
+<main{% if mainCssOverride %} class="{{ mainCssOverride }}"{% endif %}>
+
+    <article class="tile-content{% if css %} {{ css }}{% endif %}">
+        {% block maincontent %}
+        {% endblock %}
+    </article>
+
+</main>
+
+{% include '@components/footer.html.twig' %}
+
+<script src="{{ site.getAsset('js/bundle.min.js') }}" defer></script>
+</body>
+</html>

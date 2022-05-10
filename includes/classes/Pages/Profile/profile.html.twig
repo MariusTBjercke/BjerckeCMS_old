@@ -1,0 +1,49 @@
+{% extends "@grid/page.html.twig" %}
+{% set css = "profile" %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Profile</h1>
+            </div>
+            {% if site.getAction == 'success' %}
+                <div class="col profile__login-success">
+                    <div class="profile__alert-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="alert alert-success" role="alert">Login success!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h5>{{ tile.user.getUsername }}</h5>
+                <p>{{ tile.user.getEmail }}</p>
+            </div>
+        </div>
+
+        {% if tile.user.getUsername == site.getCurrentUser.getUsername %}
+            <div class="row">
+                <div class="col">
+                    <a href="index.php?action=logout">Logout</a>
+                    <div class="profile__image-upload">
+                        <h2>Upload a profile picture</h2>
+                        <input id="image-file" name="image-file" type="file">
+                        <button id="file-submit">Upload</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {{ site.renderPageTiles }}
+
+{% endblock %}

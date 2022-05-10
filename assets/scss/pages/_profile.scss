@@ -1,0 +1,52 @@
+@use '../mixins' as mixin;
+
+.profile {
+  &__login-success {
+    position: relative;
+  }
+
+  &__alert-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  &__boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    width: 350px;
+    margin: 10px 0 0 0;
+  }
+
+  &__box {
+    width: 100px;
+    height: 100px;
+
+    &_red {
+      background-color: #f44336;
+    }
+
+    &_green {
+      background-color: #4caf50;
+    }
+
+    &_yellow {
+      background-color: #ffeb3b;
+    }
+
+    &_blue {
+      background-color: #2196f3;
+    }
+  }
+
+  &__image-upload {
+    margin: 20px 0 0 0;
+  }
+
+  button {
+    @include mixin.std-button;
+  }
+}

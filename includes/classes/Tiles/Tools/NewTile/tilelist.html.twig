@@ -1,0 +1,21 @@
+<div class="new-tile__tile-list">
+    {% for tile in tile.getTiles %}
+        <div>
+            <div>
+                <span>ID:</span> {{ tile.getId() }}
+            </div>
+            <div>
+                <span>Title:</span> {{ tile.getTitle() }}
+            </div>
+            <div>
+                <span>Template path:</span> {{ tile.getTemplatePath() }}
+            </div>
+            <div>
+                <span>Class:</span> {{ tile.getClassName() }}
+            </div>
+            <div>
+                <span>Title:</span> {{ tile.getTitle }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

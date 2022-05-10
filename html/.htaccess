@@ -1,0 +1,48 @@
+RewriteEngine on
+Options +FollowSymlinks
+
+# Redirect to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^([A-Za-z_0-9\-]+)$ /index.php?page=$1 [QSA]
+RewriteRule ^([A-Za-z_0-9\-]+)/$ /index.php?page=$1 [QSA]
+RewriteRule ^([A-Za-z_0-9\-]+)/([a-z]+)$ /index.php?page=$1&name=$2 [QSA]
+RewriteRule ^([A-Za-z_0-9\-]+)/([a-z]+)/$ /index.php?page=$1&name=$2 [QSA]
+
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+ # Images
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+
+  # Video
+  ExpiresByType video/webm "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/mpeg "access plus 1 month"
+
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 month"
+  ExpiresByType font/otf "access plus 1 month"
+  ExpiresByType font/woff "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 month"
+  ExpiresByType application/font-woff "access plus 1 month"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Others
+  ExpiresByType text/plain "access plus 1 month"
+  ExpiresByType text/html "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+</IfModule>

@@ -1,0 +1,55 @@
+{% set page = tile.page %}
+
+<dialog class="pagebuilder__modal" id="modal">
+    <div class="pagebuilder__modal-content">
+        <h3>Select a page:</h3>
+        <div class="pagebuilder__page-list">
+            {% for p in site.getPages %}
+                <a href="{{ site.getUrl ~ 'pagebuilder/' ~ p.getUrl }}">{{ p.getName }}</a>
+            {% endfor %}
+        </div>
+        <div class="pagebuilder__modal-close">
+            <button>Close</button>
+        </div>
+    </div>
+</dialog>
+
+<dialog class="pagebuilder__modal-edit" id="modal-edit">
+    <div class="pagebuilder__modal-content">
+        <div class="pagebuilder__edit-tile-content"></div>
+    </div>
+</dialog>
+
+<div class="pagebuilder__form" data-page-id="{{ page.getId }}">
+    <div class="pagebuilder__form-title">
+        <h5>Editing page: {{ page.getName }} <span>(Change)</span></h5>
+    </div>
+    <div class="pagebuilder__form-tile-grid">
+        {% if tile.getTileOrder is not empty %}
+            {% for t in tile.getTileOrder %}
+                <div data-tile-id="{{ t.getId }}" data-page-id="{{ page.getId }}" class="pagebuilder__draggable">
+                    <div class="pagebuilder__edit-btns">
+                        <div class="pagebuilder__edit-btn" data-tile-id="{{ t.getId }}"><i class="bi bi-pencil-square"></i></div>
+                        <div class="pagebuilder__remove-btn"><i class="bi bi-x-circle-fill"></i></div>
+                    </div>
+                    {{ t.getTitle }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="pagebuilder__form-toolbox">
+        <div class="pagebuilder__form-toolbox">
+            <div class="new-page__form-toolbox-title">
+                <h5>Toolbox</h5>
+            </div>
+            <div class="pagebuilder__form-toolbox-list">
+                {% for tool in tile.getAllTiles %}
+                    <div data-tile-id="{{ tool.getId }}" class="pagebuilder__draggable">{{ tool.getTitle }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="pagebuilder__form-input">
+        <input type="submit" id="submit" name="submit" class="pagebuilder__submit" value="Save">
+    </div>
+</div>

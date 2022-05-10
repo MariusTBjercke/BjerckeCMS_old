@@ -1,0 +1,15 @@
+@use '../variables' as *;
+
+@mixin std-button {
+  padding: .5rem 1rem;
+  background: $btn-bg-color;
+  color: #ffffff;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}

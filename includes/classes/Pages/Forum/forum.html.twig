@@ -1,0 +1,69 @@
+{% extends "@grid/page.html.twig" %}
+{% set css = "forum" %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Forum</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="forum__wrapper">
+                    <div class="forum__header">
+                        <div class="forum__title">Welcome to the forum.</div>
+                        <div class="forum__sub-title">Here you can discuss with other users.</div>
+                    </div>
+                    <div class="forum__latest-posts">
+                        <div class="forum__latest-posts-title">Latest posts</div>
+                        <div class="forum__latest-posts-list">
+                            {% embed "Forum/front_post.html.twig" with { hidden: true } %}
+                            {% endembed %}
+                            {% for post in tile.getLatestPosts() %}
+                                {% embed "Forum/front_post.html.twig" with { title: post.getTitle, content: post.getContent, author: post.getAuthor.getUsername, time_ago: post.getTimeAgo, date: post.getDate } %}
+                                {% endembed %}
+                            {% endfor %}
+                            {% if tile.getLatestPosts is empty %}
+                                <div class="forum__no-posts">No posts yet.</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if user.getLoggedIn %}
+        <div class="container forum__new-post">
+            <div class="row">
+                <div class="col">
+                    <a class="forum__new-post-btn">New post</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="forum__new-post-form">
+                        <div class="forum__new-post-title">New post</div>
+                        <div class="forum__new-post_input">
+                            <label>
+                                <input type="text" id="title" placeholder="Title"/>
+                            </label>
+                        </div>
+                        <div class="forum__new-post_input">
+                            <textarea id="content" placeholder="Content"></textarea>
+                        </div>
+                        <div class="forum__new-post_input">
+                            <button id="submit">Submit</button>
+                            <button id="close">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {{ site.renderPageTiles }}
+
+{% endblock %}
