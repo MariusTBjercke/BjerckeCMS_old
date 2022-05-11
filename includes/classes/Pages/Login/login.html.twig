@@ -7,18 +7,18 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>Login</h2>
+                <h2>{{ site.getString(null, 'login') }}</h2>
                 <div class="login-form">
                     <div class="login-form__input">
-                        <div>Username:</div>
+                        <div>{{ site.getString(null, 'username') }}:</div>
                         <div><input type="text" id="username"></div>
                     </div>
                     <div class="login-form__input">
-                        <div>Password:</div>
+                        <div>{{ site.getString(null, 'password') }}:</div>
                         <div><input type="password" id="password"></div>
                     </div>
                     <div class="login-form__input">
-                        <input type="submit" id="submit" class="login-form__submit" value="Login">
+                        <input type="submit" id="submit" class="login-form__submit" value="{{ site.getString(null, 'login') }}">
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@
                         {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
                         {% else %}
                             <a href="{{ item.url }}"
-                               class="collapsed-navigation__item {% if item.url == site.getPageName %}collapsed-navigation__item_active{% endif %}">{{ item.name }}</a>
+                               class="collapsed-navigation__item {% if item.url == site.getPageName %}collapsed-navigation__item_active{% endif %}">{{ site.getString(item.title) }}</a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col text-end">
                         {% if user.getLoggedIn %}
-                            <a href="logout"><i class="bi bi-door-open"></i> Logout?</a>
+                            <a href="logout"><i class="bi bi-door-open"></i> {{ site.getString(16) }}?</a>
                         {% endif %}
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
                                 {% else %}
                                     <a href="{{ site.getUrl(item.url) }}"
-                                       class="navigation__item {% if item.url == site.getPageName %}navigation__item_active{% endif %}">{{ item.name }}</a>
+                                       class="navigation__item {% if item.url == site.getPageName %}navigation__item_active{% endif %}">{{ site.getString(item.title) }}</a>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}

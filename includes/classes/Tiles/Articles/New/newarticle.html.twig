@@ -1,11 +1,11 @@
 <article class="new-article">
     <div class="container">
         <div class="row">
-            <div class="new-article__title">New article</div>
+            <div class="new-article__title">{{ site.getString(32) }}</div>
             <div class="new-article__form">
                 <div class="new-article__input">
                     <label for="title">
-                        <input type="text" id="title" name="title" placeholder="Title">
+                        <input type="text" id="title" name="title" placeholder="{{ site.getString(14) }}">
                     </label>
                 </div>
                 <div class="new-article__input">
@@ -16,7 +16,7 @@
                 <div class="new-article__input">
                     <label for="background-image-checkbox">
                         <input type="checkbox" id="background-image-checkbox" name="background-image-checkbox">
-                        <span>Use a background image?</span>
+                        <span>{{ site.getString(31) }}</span>
                     </label>
                 </div>
                 <div class="new-article__input">
@@ -25,7 +25,7 @@
                     </label>
                 </div>
                 <div class="new-article__input">
-                    <button class="new-article__submit" id="submit">Submit</button>
+                    <button class="new-article__submit" id="submit">{{ site.getString(12) }}</button>
                 </div>
             </div>
         </div>

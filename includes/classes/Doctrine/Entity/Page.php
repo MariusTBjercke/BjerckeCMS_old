@@ -2,6 +2,8 @@
 
 namespace Bjercke\Entity;
 
+use Bjercke\Language\Language;
+use Bjercke\Site;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -141,7 +143,8 @@ class Page {
      * @return string
      */
     public function getDescription(): string {
-        return $this->description;
+        $lang = new Language();
+        return $lang->getString($this->description);
     }
 
     /**

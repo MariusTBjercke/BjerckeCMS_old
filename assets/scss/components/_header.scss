@@ -3,10 +3,10 @@ $border-color: #585858;
 
 nav {
   .main-navigation {
-    background: #2b2b2b;
+    background: var.$bg-color;
     width: 100%;
     padding: 0 0;
-    color: #ffffff;
+    color: var.$font-color-bg;
     box-shadow: 0 2px 2px #000000;
   }
 
@@ -28,8 +28,7 @@ nav {
 
   .top-bar {
     width: 100%;
-    background: rgb(7, 54, 86);
-    background: linear-gradient(0deg, rgba(7, 54, 86, 1) 0%, rgb(4, 68, 108) 100%);
+    background: linear-gradient(0deg, var.$bjercke-orange, var.$bjercke-orange-darker);
     height: 30px;
     display: flex;
     align-items: center;
@@ -40,10 +39,10 @@ nav {
 
     a {
       text-decoration: none;
-      color: #ffffff;
+      color: var.$font-color-bg;
 
       &:hover {
-        color: var.$bjercke-orange;
+        color: #000000;
       }
     }
   }
@@ -69,13 +68,13 @@ nav {
         &:hover {
           transition: .25s;
           cursor: pointer;
-          color: #000000;
+          color: #ffffff;
           background-color: var.$bjercke-orange;
         }
 
         &_active {
           background-color: var.$bjercke-orange;
-          color: #000000;
+          color: #ffffff;
         }
       }
 

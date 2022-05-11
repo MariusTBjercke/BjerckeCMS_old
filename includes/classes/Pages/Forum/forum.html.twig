@@ -6,18 +6,18 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Forum</h1>
+                <h1>{{ site.getString(10) }}</h1>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="forum__wrapper">
                     <div class="forum__header">
-                        <div class="forum__title">Welcome to the forum.</div>
-                        <div class="forum__sub-title">Here you can discuss with other users.</div>
+                        <div class="forum__title">{{ site.getString(6) }}</div>
+                        <div class="forum__sub-title">{{ site.getString(7) }}</div>
                     </div>
                     <div class="forum__latest-posts">
-                        <div class="forum__latest-posts-title">Latest posts</div>
+                        <div class="forum__latest-posts-title">{{ site.getString(8) }}</div>
                         <div class="forum__latest-posts-list">
                             {% embed "Forum/front_post.html.twig" with { hidden: true } %}
                             {% endembed %}
@@ -26,7 +26,7 @@
                                 {% endembed %}
                             {% endfor %}
                             {% if tile.getLatestPosts is empty %}
-                                <div class="forum__no-posts">No posts yet.</div>
+                                <div class="forum__no-posts">{{ site.getString(9) }}</div>
                             {% endif %}
                         </div>
                     </div>
@@ -39,24 +39,24 @@
         <div class="container forum__new-post">
             <div class="row">
                 <div class="col">
-                    <a class="forum__new-post-btn">New post</a>
+                    <a class="forum__new-post-btn">{{ site.getString(11) }}</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="forum__new-post-form">
-                        <div class="forum__new-post-title">New post</div>
+                        <div class="forum__new-post-title">{{ site.getString(11) }}</div>
                         <div class="forum__new-post_input">
                             <label>
-                                <input type="text" id="title" placeholder="Title"/>
+                                <input type="text" id="title" placeholder="{{ site.getString(14) }}"/>
                             </label>
                         </div>
                         <div class="forum__new-post_input">
                             <textarea id="content" placeholder="Content"></textarea>
                         </div>
                         <div class="forum__new-post_input">
-                            <button id="submit">Submit</button>
-                            <button id="close">Close</button>
+                            <button id="submit">{{ site.getString(12) }}</button>
+                            <button id="close">{{ site.getString(13) }}</button>
                         </div>
                     </div>
                 </div>

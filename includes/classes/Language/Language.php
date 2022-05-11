@@ -13,13 +13,10 @@ class Language
     private SqlConnection $db;
     private string $language;
 
-    /**
-     * @param string $language Languages: en, no
-     */
-    public function __construct(string $language)
+    public function __construct()
     {
         $this->db = SqlConnection::getInstance();
-        $this->language = $language;
+        $this->language = LANGUAGE_CODE;
     }
 
     /**

@@ -19,6 +19,12 @@ $dotenv->safeLoad();
 
 $em = SqlConnection::getInstance()->getEntityManager();
 
+/**
+ * Set website language.
+ * Examples: 'en', 'no'
+ */
+const LANGUAGE_CODE = 'no';
+
 $site = Site::getInstance();
 
 $pageName = $site->getPageName();

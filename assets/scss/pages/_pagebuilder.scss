@@ -1,4 +1,5 @@
 @use '../mixins' as mixin;
+@use '../variables' as var;
 
 .pagebuilder {
   display: flex;
@@ -69,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #cb1414;
+    color: var.$error-color;
     cursor: pointer;
   }
 

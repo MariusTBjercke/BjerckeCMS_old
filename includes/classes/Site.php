@@ -30,7 +30,7 @@ class Site extends Singleton {
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
         $this->action = $_SESSION['action'] ?? '';
-        $this->language = new Language("en");
+        $this->language = new Language();
     }
 
     /**
@@ -215,4 +215,11 @@ class Site extends Singleton {
         return date("Y");
     }
 
+    /**
+     * @return Language
+     */
+    public function getLanguage(): Language
+    {
+        return $this->language;
+    }
 }

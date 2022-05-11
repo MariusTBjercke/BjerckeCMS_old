@@ -1,4 +1,5 @@
 @use 'buttons' as btn;
+@use '../variables' as var;
 
 @mixin form-style {
   display: flex;
@@ -28,7 +29,7 @@
   }
 
   &__input-error {
-    border-color: red;
+    border-color: var.$error-color;
     border-width: 3px;
   }
 
