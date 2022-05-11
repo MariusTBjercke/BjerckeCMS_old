@@ -61,7 +61,7 @@ class Site extends Singleton {
     }
 
     public function getPageDescription(): string {
-        return $this->currentPage->getDescription();
+        return $this->currentPage->getDescriptionString();
     }
 
     /**

@@ -32,6 +32,6 @@ class Tile extends Singleton {
     }
 
     public function getPageTitle(): string {
-        return Site::getInstance()->getCurrentPage()->getTitle();
+        return Site::getInstance()->getCurrentPage()->getTitleString();
     }
 }

@@ -11,7 +11,7 @@
                         {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
                         {% else %}
                             <a href="{{ item.url }}"
-                               class="collapsed-navigation__item {% if item.url == site.getPageName %}collapsed-navigation__item_active{% endif %}">{{ site.getString(item.title) }}</a>
+                               class="collapsed-navigation__item {% if item.url == site.getPageName %}collapsed-navigation__item_active{% endif %}">{{ item.getTitleString }}</a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -50,7 +50,7 @@
                                 {% elseif site.getCurrentUser.getLoggedIn == false and item.getRequiresLogin %}
                                 {% else %}
                                     <a href="{{ site.getUrl(item.url) }}"
-                                       class="navigation__item {% if item.url == site.getPageName %}navigation__item_active{% endif %}">{{ site.getString(item.title) }}</a>
+                                       class="navigation__item {% if item.url == site.getPageName %}navigation__item_active{% endif %}">{{ item.getTitleString }}</a>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}

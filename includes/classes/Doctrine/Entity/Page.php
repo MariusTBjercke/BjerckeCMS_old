@@ -132,6 +132,11 @@ class Page {
         return $this->title;
     }
 
+    public function getTitleString(): string {
+        $language = new Language();
+        return $language->getString($this->title);
+    }
+
     /**
      * @param string $title
      */
@@ -143,8 +148,12 @@ class Page {
      * @return string
      */
     public function getDescription(): string {
-        $lang = new Language();
-        return $lang->getString($this->description);
+        return $this->description;
+    }
+
+    public function getDescriptionString(): string {
+        $language = new Language();
+        return $language->getString($this->description);
     }
 
     /**

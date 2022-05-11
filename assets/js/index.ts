@@ -22,6 +22,6 @@ window.htmx = require('htmx.org');
 
 // Images
 // @ts-ignore
-import Favicon from '../img/icons/favicon.png';
+import Favicon from '../svg/icons/favicon.svg';
 
 new Image(Favicon);

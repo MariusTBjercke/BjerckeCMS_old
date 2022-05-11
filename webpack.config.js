@@ -78,7 +78,7 @@ const cssConfig = {
                 }
             },
             {
-                test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/i,
+                test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/fonts/[name][ext]'
