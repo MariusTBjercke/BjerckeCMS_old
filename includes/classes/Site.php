@@ -4,6 +4,7 @@ namespace Bjercke;
 
 use Bjercke\Entity\Page;
 use Bjercke\Entity\User;
+use Bjercke\Language\Language;
 use Doctrine\DBAL\Exception;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
@@ -17,6 +18,7 @@ class Site extends Singleton {
     private array $pages;
     private string $action;
     private SqlConnection $db;
+    private Language $language;
 
     protected function __construct() {
         parent::__construct();
@@ -28,6 +30,18 @@ class Site extends Singleton {
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
         $this->action = $_SESSION['action'] ?? '';
+        $this->language = new Language("en");
+    }
+
+    /**
+     * Returns a string from the database.
+     *
+     * @param int|null $stringId The id of the string to get from DB.
+     * @param null $alias The alias of the string to get from DB.
+     */
+    public function getString(int|null $stringId, $alias = null): string
+    {
+        return $this->language->getString($stringId, $alias);
     }
 
     /**

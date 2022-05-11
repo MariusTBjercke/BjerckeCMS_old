@@ -26,7 +26,7 @@
                         {% if user.getLoggedIn %}
                             <a href="profile"><i class="bi bi-person-square"></i> {{ user.getUsername }}</a>
                         {% else %}
-                            <div>You are not signed in.</div>
+                            <div>{{ site.getString(1) }}</div>
                         {% endif %}
                     </div>
                     <div class="col text-end">
