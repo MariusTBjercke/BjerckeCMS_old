@@ -41,7 +41,7 @@ CREATE TABLE `tiles` (
 
 LOCK TABLES `tiles` WRITE;
 /*!40000 ALTER TABLE `tiles` DISABLE KEYS */;
-INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTile','null',NULL),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPage','null',NULL),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder','null',1),(15,'Single Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','null',1),(16,'Edit Tile','Pages/PageBuilder/edit.html.twig','PageBuilder','[]',NULL),(17,'New Article','Tiles/Articles/New/newarticle.html.twig','NewArticle','[]',NULL),(18,'Front Page Top Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','[]',1);
+INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTile','null',NULL),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPage','null',NULL),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder','null',1),(15,'Single Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','null',1),(16,'Edit Tile','Pages/PageBuilder/edit.html.twig','PageBuilder','[]',NULL),(17,'New Article','Tiles/Articles/New/newarticle.html.twig','NewArticle','[]',NULL),(18,'Front Page Top Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','[]',22);
 /*!40000 ALTER TABLE `tiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-10 16:07:30
+-- Dump completed on 2022-05-12 16:02:59
