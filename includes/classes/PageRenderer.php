@@ -25,6 +25,9 @@ class PageRenderer extends ViewRenderer {
         $site = Site::getInstance();
         $pageName = $site->getPageName();
 
+        // Store the page in last visited session
+        $site->storeVisitedPage();
+
         // Find corresponding page
         $em = SqlConnection::getInstance()->getEntityManager();
         $page = $em->getRepository(Page::class)->findOneBy(['name' => $pageName]);

@@ -134,7 +134,7 @@ class Page {
 
     public function getTitleString(): string {
         $language = new Language();
-        return $language->getString($this->title);
+        return $language->getString((int) $this->title);
     }
 
     /**
@@ -152,7 +152,7 @@ class Page {
     }
 
     public function getDescriptionString(): string {
-        return (new Language())->getString($this->description);
+        return (new Language())->getString((int) $this->description);
     }
 
     /**

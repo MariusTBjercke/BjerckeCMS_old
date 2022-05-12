@@ -10,6 +10,7 @@
 @use 'tiles/new-article' as *;
 @use 'tiles/new-page' as *;
 @use 'tiles/new-tile' as *;
+@use 'tiles/billboard' as *;
 
 // Components
 @use 'components/header' as *;
@@ -70,7 +71,6 @@ a {
 
 main {
   flex: 1;
-  margin-top: 25px;
 }
 
 .tile-content {

@@ -1,5 +1,9 @@
 @use '../mixins';
 
-.login-form {
-  @include mixins.form-style;
+.login {
+  margin-top: 15px;
+
+  &-form {
+    @include mixins.form-style;
+  }
 }

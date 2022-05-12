@@ -35,6 +35,11 @@ class Article {
     private string $content;
 
     /**
+     * @Column(type="boolean", name="has_background", options={"default": false})
+     */
+    private bool $hasBackground;
+
+    /**
      * @Column(type="string", name="background_image", nullable=true)
      */
     private string $backgroundImage;
@@ -186,6 +191,42 @@ class Article {
     public function setTiles(Tile $tiles): Article
     {
         $this->tiles = $tiles;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBackgroundImage(): string
+    {
+        return $this->backgroundImage;
+    }
+
+    /**
+     * @param string $backgroundImage
+     * @return Article
+     */
+    public function setBackgroundImage(string $backgroundImage): Article
+    {
+        $this->backgroundImage = $backgroundImage;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHasBackground(): bool
+    {
+        return $this->hasBackground;
+    }
+
+    /**
+     * @param bool $hasBackground
+     * @return Article
+     */
+    public function setHasBackground(bool $hasBackground): Article
+    {
+        $this->hasBackground = $hasBackground;
         return $this;
     }
 }

@@ -24,13 +24,14 @@ class Language
      * @throws TransactionRequiredException
      * @throws ORMException
      */
-    public function getString(int|null $stringId, string|null $alias = null): string {
+    public function getString(int|string $string): string {
         $em = $this->db->getEntityManager();
 
-        if ($alias !== null) {
-            $string = $em->getRepository(LanguageString::class)->findOneBy(['alias' => $alias]);
+        // If the parameter is a string, look for alias. If not, look for id.
+        if (is_string($string)) {
+            $string = $em->getRepository(LanguageString::class)->findOneBy(['alias' => $string]);
         } else {
-            $string = $em->find(LanguageString::class, $stringId);
+            $string = $em->find(LanguageString::class, $string);
         }
 
         if ($this->getLanguage() === 'en') {

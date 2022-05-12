@@ -1,7 +1,7 @@
 <div class="container new-tile">
     <div class="row">
         <div class="col">
-            <h4>Add new tile</h4>
+            <h4>{{ site.getString(35) }}</h4>
         </div>
     </div>
 
@@ -9,24 +9,24 @@
         <div class="col">
             <div class="new-tile__form">
                 <div class="new-tile__form-input">
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" placeholder="Title">
+                    <label for="title">{{ site.getString(14) }}:</label>
+                    <input type="text" id="title" name="title" placeholder="{{ site.getString(14) }}">
                 </div>
 
                 <div class="new-tile__form-input">
-                    <label for="template">Template path:</label>
-                    <input type="text" id="template" name="template" placeholder="Template path">
-                    <span>Example: Tiles/Articles/Display/articledisplay.html.twig</span>
+                    <label for="template">{{ site.getString(36) }}:</label>
+                    <input type="text" id="template" name="template" placeholder="{{ site.getString(36) }}">
+                    <span>{{ site.getString(42) }}</span>
                 </div>
 
                 <div class="new-tile__form-input">
-                    <label for="class-name">Class name:</label>
-                    <input type="text" id="class-name" name="class-name" placeholder="Class name">
-                    <span>Example: ArticleDisplay (in namespace Bjercke\Tile)</span>
+                    <label for="class-name">{{ site.getString(39) }}:</label>
+                    <input type="text" id="class-name" name="class-name" placeholder="{{ site.getString(39) }}">
+                    <span>{{ site.getString(40) }}</span>
                 </div>
 
                 <div class="new-tile__form-input">
-                    <input type="submit" value="Save" id="submit">
+                    <input type="submit" value="{{ site.getString(41) }}" id="submit">
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
     <div class="row">
         <div class="col">
-            <h4>Existing tiles:</h4>
+            <h4>{{ site.getString(43) }}</h4>
             <div class="new-tile__spinner"></div>
             <div class="new-tile__existing-tiles"></div>
         </div>

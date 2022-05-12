@@ -1,6 +1,8 @@
 @use '../mixins' as mixin;
 
 .profile {
+  margin-top: 15px;
+
   &__login-success {
     position: relative;
   }

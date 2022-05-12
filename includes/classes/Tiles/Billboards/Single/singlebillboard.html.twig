@@ -1,8 +1,27 @@
-<div class="container billboard__single-image">
+<div class="container-fluid px-0 billboard">
     <div class="row">
         <div class="col">
-            <h2>{{ article.getTitle }}</h2>
-            <p>{{ article.getContent|raw }}</p>
+            <div class="billboard__wrapper">
+                {% if article.hasBackground %}
+                    <figure>
+                        <img src="{{ site.renderImage(article.getBackgroundImage)|raw }}" alt="">
+                    </figure>
+                {% endif %}
+                <div class="billboard__content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="billboard__content-bubble">
+                                    <h2>{{ article.getTitle }}</h2>
+                                    <div>
+                                        {{ article.getContent|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

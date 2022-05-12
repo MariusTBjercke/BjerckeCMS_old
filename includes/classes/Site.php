@@ -30,8 +30,12 @@ class Site extends Singleton {
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
         $this->action = $_SESSION['action'] ?? '';
-        $this->languageSelector();
         $this->logoutCheck();
+        $this->languageSelector();
+    }
+
+    public function renderImage($fileName) {
+        return (new FileProvider(__DIR__ . "/../../uploads/"))->getImage($fileName);
     }
 
     public function logoutCheck(): void {
@@ -51,7 +55,7 @@ class Site extends Singleton {
         if ($this->getPageName() === 'language') {
             $langCode = $_REQUEST['name'] ?? 'no';
             $_SESSION['language'] = $langCode;
-            header('Location: /');
+            header('Location: /' . $this->getLastVisitedPage());
         }
     }
 
@@ -66,12 +70,11 @@ class Site extends Singleton {
     /**
      * Returns a string from the database.
      *
-     * @param int|null $stringId The id of the string to get from DB.
-     * @param null $alias The alias of the string to get from DB.
+     * @param int|string $string The string ID or the string alias
      */
-    public function getString(int|null $stringId, $alias = null): string
+    public function getString(int|string $string): string
     {
-        return $this->getLanguage()->getString($stringId, $alias);
+        return $this->getLanguage()->getString($string);
     }
 
     /**
@@ -276,5 +279,21 @@ class Site extends Singleton {
     public function setMultilingual(bool $multilingual): void
     {
         $this->multilingual = $multilingual;
+    }
+
+    public function storeVisitedPage(): void
+    {
+        $page = $this->getPageName();
+
+        // If session is not set or if bigger than 20, initialize with empty array
+        if (!isset($_SESSION['visited_pages']) || count($_SESSION['visited_pages']) > 20) {
+            $_SESSION['visited_pages'] = [];
+        }
+
+        $_SESSION['visited_pages'][] = $page;
+    }
+
+    public function getLastVisitedPage() {
+        return $_SESSION['visited_pages'][count($_SESSION['visited_pages']) - 1];
     }
 }

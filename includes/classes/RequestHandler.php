@@ -101,8 +101,8 @@ class RequestHandler {
         if ($result) {
             $result->setLoggedIn(true);
             $em->flush();
-            $_SESSION['user'] = serialize($result);
-            setcookie('user', serialize($result), time() + (7 * 24 * 60 * 60));
+            $storage = new WebStorage('user', serialize($result), (7 * 24 * 60 * 60));
+            $storage->save();
             $_SESSION['action'] = "success";
             $response = [
                 'action'  => 'success',
@@ -284,7 +284,9 @@ class RequestHandler {
         $content = filter_var($_REQUEST['content'], FILTER_UNSAFE_RAW) ?? '';
         $backgroundCheck = filter_var($_REQUEST['background_check'], FILTER_UNSAFE_RAW) ?? '';
 
-        if ($backgroundCheck) {
+        $upload = false;
+
+        if ($backgroundCheck === "true") {
             $file = new FileUpload($_FILES['background_file']);
             $image = $file->imageCheck();
             $size = $file->sizeCheck(2097152); // 2MB
@@ -311,7 +313,9 @@ class RequestHandler {
                 return;
             }
 
-            if (!$file->upload("img/uploads/")) {
+            if ($file->upload(__DIR__ . "/../../uploads/")) {
+                $upload = true;
+            } else {
                 echo "0";
                 return;
             }
@@ -334,6 +338,13 @@ class RequestHandler {
             ->setContent($content)
             ->setAuthor($userEntity)
             ->setDate(time());
+
+        if ($upload) {
+            $article->setHasBackground(true);
+            $article->setBackgroundImage($file->getFileNewName());
+        } else {
+            $article->setHasBackground(false);
+        }
 
         $em->persist($article);
         $em->flush();

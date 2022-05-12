@@ -5,16 +5,13 @@
                 <span>ID:</span> {{ tile.getId() }}
             </div>
             <div>
-                <span>Title:</span> {{ tile.getTitle() }}
+                <span>{{ site.getString(14) }}:</span> {{ tile.getTitle() }}
             </div>
             <div>
-                <span>Template path:</span> {{ tile.getTemplatePath() }}
+                <span>{{ site.getString(36) }}:</span> {{ tile.getTemplatePath() }}
             </div>
             <div>
-                <span>Class:</span> {{ tile.getClassName() }}
-            </div>
-            <div>
-                <span>Title:</span> {{ tile.getTitle }}
+                <span>{{ site.getString(44) }}:</span> {{ tile.getClassName() }}
             </div>
         </div>
     {% endfor %}
