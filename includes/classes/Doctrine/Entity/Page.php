@@ -152,8 +152,7 @@ class Page {
     }
 
     public function getDescriptionString(): string {
-        $language = new Language();
-        return $language->getString($this->description);
+        return (new Language())->getString($this->description);
     }
 
     /**

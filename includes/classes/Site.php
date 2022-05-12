@@ -18,7 +18,7 @@ class Site extends Singleton {
     private array $pages;
     private string $action;
     private SqlConnection $db;
-    private Language $language;
+    private bool $multilingual = true;
 
     protected function __construct() {
         parent::__construct();
@@ -30,7 +30,37 @@ class Site extends Singleton {
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
         $this->action = $_SESSION['action'] ?? '';
-        $this->language = new Language();
+        $this->languageSelector();
+        $this->logoutCheck();
+    }
+
+    public function logoutCheck(): void {
+        $em = $this->db->getEntityManager();
+        if ($this->getCurrentUser()->getLoggedIn()) {
+            // Get fresh user data from DB;
+            $user = $em->find(User::class, $this->getCurrentUser());
+
+            // If on logout page or if the user is logged out in DB but still has a session
+            if ($this->pageName === 'logout' || !$user->getLoggedIn()) {
+                $this->logout();
+            }
+        }
+    }
+
+    public function languageSelector(): void {
+        if ($this->getPageName() === 'language') {
+            $langCode = $_REQUEST['name'] ?? 'no';
+            $_SESSION['language'] = $langCode;
+            header('Location: /');
+        }
+    }
+
+    public function getLanguageCode($upperCase = false): string {
+        return $this->getLanguage()->getLanguageCode($upperCase);
+    }
+
+    public function getOppositeLanguageCode($upperCase = false): string {
+        return $this->getLanguage()->getOppositeLanguageCode($upperCase);
     }
 
     /**
@@ -41,7 +71,7 @@ class Site extends Singleton {
      */
     public function getString(int|null $stringId, $alias = null): string
     {
-        return $this->language->getString($stringId, $alias);
+        return $this->getLanguage()->getString($stringId, $alias);
     }
 
     /**
@@ -215,11 +245,36 @@ class Site extends Singleton {
         return date("Y");
     }
 
+    public function setLanguage(string $language): void {
+        if (!isset($_SESSION['language'])) {
+            $_SESSION['language'] = $language;
+            header("Location: /");
+        }
+
+        $_SESSION['language'] = $_SESSION['language'] ?? 'en';
+    }
+
     /**
      * @return Language
      */
     public function getLanguage(): Language
     {
-        return $this->language;
+        return new Language();
+    }
+
+    /**
+     * @return bool
+     */
+    public function getMultilingual(): bool
+    {
+        return $this->multilingual;
+    }
+
+    /**
+     * @param bool $multilingual
+     */
+    public function setMultilingual(bool $multilingual): void
+    {
+        $this->multilingual = $multilingual;
     }
 }

@@ -45,6 +45,13 @@ nav {
         color: #000000;
       }
     }
+
+    &__right-links {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 10px;
+    }
   }
 
   .navigation-wrapper {

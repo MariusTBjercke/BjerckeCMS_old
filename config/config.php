@@ -17,30 +17,21 @@ const developmentMode = true;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->safeLoad();
 
-$em = SqlConnection::getInstance()->getEntityManager();
+$site = Site::getInstance();
 
 /**
  * Set website language.
  * Examples: 'en', 'no'
  */
-const LANGUAGE_CODE = 'no';
-
-$site = Site::getInstance();
-
-$pageName = $site->getPageName();
-
-if ($site->getCurrentUser()->getLoggedIn()) {
-    // Get fresh user data from DB;
-    $user = $em->find(User::class, $site->getCurrentUser());
-
-    // If on logout page or if the user is logged out in DB but still has a session
-    if ($pageName === 'logout' || !$user->getLoggedIn()) {
-        $site->logout();
-    }
-}
+$site->setLanguage('no');
 
 /**
- * Twig settings
+ * Allow multiple languages?
+ */
+$site->setMultilingual(true);
+
+/**
+ * Twig settings.
  */
 $pageRenderer = View::getInstance();
 $tileRenderer = TileRenderer::getInstance();
@@ -57,8 +48,6 @@ $pageRenderer->addPath(__DIR__ . '/../includes/classes/Tiles', 'tiles');
 // Twig custom functions
 $pageRenderer->addGlobalFunction('redirect', [TwigExtension\TwigRedirect::class, 'redirect']);
 $pageRenderer->addGlobalFunction('redirectIfLoggedIn', [TwigExtension\TwigRedirect::class, 'redirectIfLoggedIn']);
-
-$user = $site->getCurrentUser();
 
 // Clear action session data
 unset($_SESSION['action']);

@@ -29,10 +29,11 @@
                             <div>{{ site.getString(1) }}</div>
                         {% endif %}
                     </div>
-                    <div class="col text-end">
+                    <div class="col top-bar__right-links">
                         {% if user.getLoggedIn %}
                             <a href="logout"><i class="bi bi-door-open"></i> {{ site.getString(16) }}?</a>
                         {% endif %}
+                        {% if site.getMultilingual %}<a href="language/{{ site.getOppositeLanguageCode() }}"><i class="bi bi-globe"></i> {{ site.getOppositeLanguageCode(true) }}</a>{% endif %}
                     </div>
                 </div>
             </div>

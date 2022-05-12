@@ -16,7 +16,7 @@ class Language
     public function __construct()
     {
         $this->db = SqlConnection::getInstance();
-        $this->language = LANGUAGE_CODE;
+        $this->language = $_SESSION['language'] ?? null;
     }
 
     /**
@@ -42,6 +42,30 @@ class Language
         }
 
         return $string->getEn();
+    }
+
+    public function getLanguageCode($upperCase = false): string {
+        if ($upperCase) {
+            return strtoupper($this->getLanguage());
+        }
+
+        return $this->language;
+    }
+
+    public function getOppositeLanguageCode($upperCase = false): string {
+        if ($this->getLanguage() === 'en') {
+            if ($upperCase) {
+                return strtoupper('no');
+            }
+
+            return 'no';
+        }
+
+        if ($upperCase) {
+            return strtoupper('en');
+        }
+
+        return 'en';
     }
 
     /**
