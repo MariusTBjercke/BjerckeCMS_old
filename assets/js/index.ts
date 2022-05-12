@@ -3,16 +3,20 @@ import 'bootstrap';
 import 'htmx.org';
 import 'unpoly';
 
-// Other assets
-import './lib/navigation';
-import './lib/login';
-import './lib/register';
-import './lib/profile';
-import './lib/forum';
-import './lib/admin';
-import './lib/pagebuilder';
-import './lib/footer';
+// Pages
+import './pages/login';
+import './pages/register';
+import './pages/profile';
+import './pages/forum';
+import './pages/admin';
+import './pages/pagebuilder';
+
+// Components
+import './components/header';
+import './components/footer';
 import './components/alert';
+
+// Tiles
 import './tiles/new-article';
 import './tiles/new-page';
 import './tiles/new-tile';

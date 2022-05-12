@@ -61,32 +61,35 @@ up.compiler('.pagebuilder', (element) => {
         function dropTile(item) {
             const droppedTileId = item.getAttribute('data-tile-id');
 
-            // Add trash and edit icon
-            const btnsParent = document.createElement('div');
-            btnsParent.classList.add('pagebuilder__edit-btns');
+            // Only add buttons if they don't already exist
+            if (!item.querySelector('.pagebuilder__edit-btns')) {
+                // Add trash and edit icon
+                const btnsParent = document.createElement('div');
+                btnsParent.classList.add('pagebuilder__edit-btns');
 
-            const removeDiv = document.createElement('div');
-            removeDiv.classList.add('pagebuilder__remove-btn');
+                const removeDiv = document.createElement('div');
+                removeDiv.classList.add('pagebuilder__remove-btn');
 
-            const trashIcon = document.createElement('i');
-            trashIcon.setAttribute('class', 'bi bi-x-circle-fill');
-            removeDiv.appendChild(trashIcon);
+                const trashIcon = document.createElement('i');
+                trashIcon.setAttribute('class', 'bi bi-x-circle-fill');
+                removeDiv.appendChild(trashIcon);
 
-            const editDiv = document.createElement('div');
-            editDiv.classList.add('pagebuilder__edit-btn');
-            editDiv.setAttribute('data-tile-id', droppedTileId);
-            const editIcon = document.createElement('i');
-            editIcon.setAttribute('class', 'bi bi-pencil-square');
-            editDiv.appendChild(editIcon);
+                const editDiv = document.createElement('div');
+                editDiv.classList.add('pagebuilder__edit-btn');
+                editDiv.setAttribute('data-tile-id', droppedTileId);
+                const editIcon = document.createElement('i');
+                editIcon.setAttribute('class', 'bi bi-pencil-square');
+                editDiv.appendChild(editIcon);
 
-            btnsParent.appendChild(editDiv);
-            btnsParent.appendChild(removeDiv);
+                btnsParent.appendChild(editDiv);
+                btnsParent.appendChild(removeDiv);
 
-            item.appendChild(btnsParent);
+                item.appendChild(btnsParent);
 
-            removeDiv.addEventListener('click', (e) => {
-                removeTile(removeDiv);
-            });
+                removeDiv.addEventListener('click', (e) => {
+                    removeTile(removeDiv);
+                });
+            }
 
             emptyCheck();
 
@@ -182,13 +185,17 @@ up.compiler('.pagebuilder', (element) => {
             let tileToEditId;
 
             editTileBtns.forEach((btn) => {
-                btn.addEventListener('click', (e) => {
-                    tileToEditId = btn.getAttribute('data-tile-id');
-                    renderTile(16, editTileDiv, editTileScript, {
-                        tileId: tileToEditId,
+                // If the button has no event listener, add one.
+                if (btn.getAttribute('listener') !== 'true') {
+                    btn.addEventListener('click', (e) => {
+                        btn.setAttribute('listener', 'true');
+                        tileToEditId = btn.getAttribute('data-tile-id');
+                        renderTile(16, editTileDiv, editTileScript, {
+                            tileId: tileToEditId,
+                        });
+                        editModal.showModal();
                     });
-                    editModal.showModal();
-                });
+                }
             });
 
             function editTileScript() {

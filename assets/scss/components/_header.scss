@@ -18,6 +18,7 @@ nav {
     background: url('../svg/logo.svg') no-repeat;
     height: 40px;
     background-size: contain;
+    transition: filter 0.3s ease-in-out;
 
     &:hover {
       filter: grayscale(100%);
