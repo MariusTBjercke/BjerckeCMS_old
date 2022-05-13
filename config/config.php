@@ -8,6 +8,7 @@ use Bjercke\SqlConnection;
 use Bjercke\PageRenderer as View;
 use Bjercke\TileRenderer;
 use Bjercke\TwigExtensions as TwigExtension;
+use Bjercke\WebStorage;
 
 // Development only
 //error_reporting(E_ALL & ~E_WARNING);
@@ -50,4 +51,5 @@ $pageRenderer->addGlobalFunction('redirect', [TwigExtension\TwigRedirect::class,
 $pageRenderer->addGlobalFunction('redirectIfLoggedIn', [TwigExtension\TwigRedirect::class, 'redirectIfLoggedIn']);
 
 // Clear action session data
-unset($_SESSION['action']);
+$actionStorage = new WebStorage('action');
+$actionStorage->unsetSession();

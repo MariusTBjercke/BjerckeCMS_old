@@ -29,7 +29,7 @@ class Site extends Singleton {
         $this->currentPage = new Page(
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
-        $this->action = $_SESSION['action'] ?? '';
+        $this->action = (new WebStorage('action'))->getSessionValue('');
         $this->logoutCheck();
         $this->languageSelector();
     }
@@ -54,7 +54,8 @@ class Site extends Singleton {
     public function languageSelector(): void {
         if ($this->getPageName() === 'language') {
             $langCode = $_REQUEST['name'] ?? 'no';
-            $_SESSION['language'] = $langCode;
+            $langStorage = new WebStorage('language');
+            $langStorage->setSessionValue($langCode);
             header('Location: /' . $this->getLastVisitedPage());
         }
     }
@@ -119,17 +120,16 @@ class Site extends Singleton {
     }
 
     public function setCurrentUser() {
+        $storage = new WebStorage('user');
+
         // Cookie check
-        if (isset($_COOKIE['user']) && !$_SESSION['user']) {
-            $_SESSION['user'] = $_COOKIE['user'];
+        if ($storage->getCookieSet() && !$storage->getSessionSet()) {
+            $storage->setSessionValue($storage->getCookieValue());
+            return $storage->getUnserializedValue();
         }
 
-        if (isset($_SESSION['user'])) {
-            return unserialize($_SESSION['user'], ['allowed_classes' => true]);
-        }
-
-        if (isset($_COOKIE['user'])) {
-            return unserialize($_COOKIE['user'], ['allowed_classes' => true]);
+        if ($storage->getSessionSet()) {
+            return $storage->getUnserializedValue();
         }
 
         return new User();
@@ -249,12 +249,11 @@ class Site extends Singleton {
     }
 
     public function setLanguage(string $language): void {
-        if (!isset($_SESSION['language'])) {
-            $_SESSION['language'] = $language;
+        $langStorage = new WebStorage('language');
+        if (!$langStorage->getSessionSet()) {
+            $langStorage->setSessionValue($language);
             header("Location: /");
         }
-
-        $_SESSION['language'] = $_SESSION['language'] ?? 'en';
     }
 
     /**
@@ -285,15 +284,12 @@ class Site extends Singleton {
     {
         $page = $this->getPageName();
 
-        // If session is not set or if bigger than 20, initialize with empty array
-        if (!isset($_SESSION['visited_pages']) || count($_SESSION['visited_pages']) > 20) {
-            $_SESSION['visited_pages'] = [];
-        }
+        $storage = new WebStorage('visited_pages', $page);
 
-        $_SESSION['visited_pages'][] = $page;
+        $storage->saveArray();
     }
 
     public function getLastVisitedPage() {
-        return $_SESSION['visited_pages'][count($_SESSION['visited_pages']) - 1];
+        return (new WebStorage('visited_pages'))->getLastValueInArray();
     }
 }

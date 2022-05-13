@@ -5,6 +5,8 @@
 @use 'pages/forum' as *;
 @use 'pages/admin' as *;
 @use 'pages/pagebuilder' as *;
+@use 'pages/edit-articles' as *;
+@use 'pages/edit-article' as *;
 
 // Tiles
 @use 'tiles/new-article' as *;

@@ -4,6 +4,7 @@ use Bjercke\Entity\Article;
 use Bjercke\Entity\Page;
 use Bjercke\Site;
 use Bjercke\Tile;
+use Bjercke\WebStorage;
 
 class PageBuilder extends Tile {
     public Page $page;
@@ -13,6 +14,12 @@ class PageBuilder extends Tile {
         $this->page = $this->getPageToEdit();
     }
 
+    public function getEditablePages() {
+        $em = $this->db->getEntityManager();
+
+        return $em->getRepository(Page::class)->findBy(['editable' => true]);
+    }
+
     /**
      * Get page from db that matches the given name.
      *
@@ -20,10 +27,12 @@ class PageBuilder extends Tile {
      *     null.
      */
     public function getPageToEdit(): Page|null {
+        $pageNameStorage = new WebStorage('page_name');
+
         if (isset($_REQUEST['name'])) {
-            $_SESSION['page_name'] = $_REQUEST['name'];
+            $pageNameStorage->setSessionValue($_REQUEST['name']);
         }
-        $name = $_SESSION['page_name'] ?? "home";
+        $name = $pageNameStorage->getSessionValue("home");
         $em = $this->db->getEntityManager();
 
         $page = $em->getRepository(Page::class)->findOneBy(['name' => $name]);

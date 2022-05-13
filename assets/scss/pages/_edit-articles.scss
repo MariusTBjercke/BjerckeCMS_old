@@ -1,0 +1,22 @@
+.edit-articles {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+
+      &_icons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+  }
+}

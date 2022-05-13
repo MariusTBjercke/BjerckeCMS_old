@@ -2,6 +2,8 @@
 
 namespace Bjercke\TwigExtensions;
 
+use Bjercke\WebStorage;
+
 /**
  * Redirect Twig function.
  */
@@ -22,7 +24,8 @@ class TwigRedirect {
      * @param string $page The page name that you want to redirect to.
      */
     public static function redirectIfLoggedIn(string $page): void {
-        if (isset($_SESSION['user']) || isset($_COOKIE['user'])) {
+        $storage = new WebStorage('user');
+        if ($storage->getSessionOrCookieSet()) {
             header('Location: ' . $page);
         }
     }

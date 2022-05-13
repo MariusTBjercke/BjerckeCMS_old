@@ -77,9 +77,14 @@ class Page {
      */
     private array $tileOrder;
 
+    /**
+     * @Column(type="boolean", options={"default":true})
+     */
+    private bool $editable;
+
     public function __construct(
         string $name, string $title, string $description, string $icon, string $url, string $template, string $class,
-        bool   $navigation, bool $requiresLogin = false, bool $hideWhenLoggedIn = false, array $tileOrder = []
+        bool   $navigation, bool $requiresLogin = false, bool $hideWhenLoggedIn = false, array $tileOrder = [], bool $editable = true
     ) {
         $this->name = $name;
         $this->title = $title;

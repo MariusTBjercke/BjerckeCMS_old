@@ -101,9 +101,10 @@ class RequestHandler {
         if ($result) {
             $result->setLoggedIn(true);
             $em->flush();
-            $storage = new WebStorage('user', serialize($result), (7 * 24 * 60 * 60));
-            $storage->save();
-            $_SESSION['action'] = "success";
+            $userStorage = new WebStorage('user', serialize($result), (7 * 24 * 60 * 60));
+            $userStorage->save();
+            $actionStorage = new WebStorage('action');
+            $actionStorage->setSessionValue("success");
             $response = [
                 'action'  => 'success',
                 'message' => 'Logged in successfully.'
@@ -145,7 +146,8 @@ class RequestHandler {
             'message' => 'Account was created successfully.'
         ];
 
-        $_SESSION['action'] = "success";
+        $actionStorage = new WebStorage('action');
+        $actionStorage->setSessionValue("success");
 
         $this->responseJson($response);
     }

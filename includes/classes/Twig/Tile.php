@@ -19,13 +19,15 @@ class Tile extends Singleton {
     }
 
     /**
-     * @return User
+     * @return object
      * @throws NotLoggedInException
      */
-    public function getCurrentUser(): User {
-        /** @var $user User */
-        if (isset($_SESSION['user'])) {
-            return unserialize($_SESSION['user'], ["allowed_classes" => true]);
+    public function getCurrentUser(): object
+    {
+        $storage = new WebStorage('user');
+
+        if ($storage->getSessionOrCookieSet()) {
+            return $storage->getUnserializedValue();
         }
 
         throw new NotLoggedInException();

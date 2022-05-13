@@ -4,7 +4,7 @@
     <div class="pagebuilder__modal-content">
         <h3>Select a page:</h3>
         <div class="pagebuilder__page-list">
-            {% for p in site.getPages %}
+            {% for p in tile.getEditablePages %}
                 <a href="{{ site.getUrl ~ 'pagebuilder/' ~ p.getUrl }}">{{ p.getName }}</a>
             {% endfor %}
         </div>

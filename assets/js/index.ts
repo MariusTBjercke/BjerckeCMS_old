@@ -10,6 +10,7 @@ import './pages/profile';
 import './pages/forum';
 import './pages/admin';
 import './pages/pagebuilder';
+import './pages/edit-article';
 
 // Components
 import './components/header';

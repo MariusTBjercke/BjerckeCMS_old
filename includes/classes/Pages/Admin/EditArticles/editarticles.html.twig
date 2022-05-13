@@ -1,0 +1,31 @@
+{% extends "@grid/page.html.twig" %}
+{% set css = "edit-articles" %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="edit-articles">
+                    <h2>{{ site.getString('edit_articles') }}</h2>
+                    <div class="edit-articles__list">
+                        {% for article in tile.getArticles %}
+                            <div class="edit-articles__list-item">
+                                <div class="edit-articles__list-item_title">{{ article.getTitle }}</div>
+                                <div class="edit-articles__list-item_icons">
+                                    <a href="{{ site.getUrl('editarticle') }}?id={{ article.getId }}" class="edit-articles__list-item_icon">
+                                        Edit
+                                    </a>
+                                    <a href="{{ site.getUrl('deletearticle') }}?id={{ article.getId }}" class="edit-articles__list-item_icon">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "@grid/page.html.twig" %}
+{% set css = "edit-articles" %}
+{% set article = tile.getArticle %}
+
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="edit-article">
+                    <div class="edit-article__back-button">
+                        <a href="/editarticles" class="btn btn-primary">{{ site.getString('go_back') }}</a>
+                    </div>
+
+                    <h2>{{ site.getString('edit_article') }}</h2>
+
+                    <div class="edit-article__form">
+                        <div class="edit-article__input">
+                            <label for="title">
+                                <input type="text" id="title" name="title" placeholder="{{ article.getTitle }}">
+                            </label>
+                        </div>
+                        <div class="edit-article__input">
+                            <label for="content">
+                                <textarea id="content" name="content">{{ article.getContent }}</textarea>
+                            </label>
+                        </div>
+                        <div class="edit-article__input">
+                            <label for="background-image-checkbox">
+                                <input type="checkbox" id="background-image-checkbox" name="background-image-checkbox"{% if article.getHasBackground %} checked{% endif %}>
+                                <span>{{ site.getString(31) }}</span>
+                            </label>
+                        </div>
+                        <div class="edit-article__input">
+                            <label for="background-image">
+                                <input id="background-image" name="background-image" type="file">
+                            </label>
+                        </div>
+                        <div class="edit-article__input">
+                            <button class="edit-article__submit" id="submit">{{ site.getString(41) }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

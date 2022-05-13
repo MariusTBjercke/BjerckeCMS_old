@@ -1,0 +1,14 @@
+.edit-article {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: 5px 10px;
+  }
+}

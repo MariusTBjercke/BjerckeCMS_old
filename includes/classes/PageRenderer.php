@@ -41,8 +41,10 @@ class PageRenderer extends ViewRenderer {
         $classString = $currentPage->getClass();
         $requiresLogin = $currentPage->getRequiresLogin();
 
+        $storage = new WebStorage('user');
+
         try {
-            if ($requiresLogin && !isset($_SESSION['user'])) {
+            if ($requiresLogin && !$storage->getSessionOrCookieSet()) {
                 header('Location: /');
             } else {
                 $class = call_user_func("$classString::getInstance");

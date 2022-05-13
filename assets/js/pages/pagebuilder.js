@@ -61,8 +61,8 @@ up.compiler('.pagebuilder', (element) => {
         function dropTile(item) {
             const droppedTileId = item.getAttribute('data-tile-id');
 
-            // Only add buttons if they don't already exist
-            if (!item.querySelector('.pagebuilder__edit-btns')) {
+            // Only add buttons if they don't already exist and is dropped in the correct grid
+            if (!item.querySelector('.pagebuilder__edit-btns') && !item.parentNode.classList.contains('pagebuilder__form-toolbox-list')) {
                 // Add trash and edit icon
                 const btnsParent = document.createElement('div');
                 btnsParent.classList.add('pagebuilder__edit-btns');
