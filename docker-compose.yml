@@ -16,6 +16,7 @@ services:
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./docker/php/ssl:/etc/apache2/ssl
+      - ./docker/php/tmp/xdebug:/tmp/xdebug
       - ./docker/log/apache2:/var/log/apache2
       - ./docker/.bashrc:/root/.bashrc
     ports:

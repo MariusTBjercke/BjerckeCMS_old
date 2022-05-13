@@ -6,9 +6,16 @@
   &__form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
   }
 
   &__input {
-    padding: 5px 10px;
+    input {
+      padding: 5px 10px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 15px;
   }
 }

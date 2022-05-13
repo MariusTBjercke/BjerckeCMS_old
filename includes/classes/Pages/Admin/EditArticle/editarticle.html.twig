@@ -9,16 +9,15 @@
             <div class="col">
                 <div class="edit-article">
                     <div class="edit-article__back-button">
-                        <a href="/editarticles" class="btn btn-primary">{{ site.getString('go_back') }}</a>
+                        <a href="/editarticles" class="btn">{{ site.getString('go_back') }}</a>
                     </div>
 
                     <h2>{{ site.getString('edit_article') }}</h2>
 
-                    <div class="edit-article__form">
+                    <div class="edit-article__form" data-article-id="{{ article.getId }}">
                         <div class="edit-article__input">
-                            <label for="title">
-                                <input type="text" id="title" name="title" placeholder="{{ article.getTitle }}">
-                            </label>
+                            <label for="title">{{ site.getString('title') }}: </label>
+                            <input type="text" id="title" name="title" value="{{ article.getTitle }}">
                         </div>
                         <div class="edit-article__input">
                             <label for="content">
