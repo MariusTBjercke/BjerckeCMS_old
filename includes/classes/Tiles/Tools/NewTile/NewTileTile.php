@@ -6,7 +6,7 @@ use Bjercke\SqlConnection;
 use Bjercke\Tile;
 use Bjercke\TileRenderer;
 
-class NewTile extends Tile {
+class NewTileTile extends Tile {
 
     public function getTiles() {
         $em = SqlConnection::getInstance()->getEntityManager();

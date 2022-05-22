@@ -7,8 +7,8 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 RewriteRule ^([A-Za-z_0-9\-]+)$ /index.php?page=$1 [QSA]
 RewriteRule ^([A-Za-z_0-9\-]+)/$ /index.php?page=$1 [QSA]
-RewriteRule ^([A-Za-z_0-9\-]+)/([a-z]+)$ /index.php?page=$1&name=$2 [QSA]
-RewriteRule ^([A-Za-z_0-9\-]+)/([a-z]+)/$ /index.php?page=$1&name=$2 [QSA]
+RewriteRule ^([A-Za-z_0-9\-]+)/([A-Za-z_0-9\-]+)$ /index.php?page=$1&name=$2 [QSA]
+RewriteRule ^([A-Za-z_0-9\-]+)/([A-Za-z_0-9\-]+)/$ /index.php?page=$1&name=$2 [QSA]
 
 
 # Cache static assets

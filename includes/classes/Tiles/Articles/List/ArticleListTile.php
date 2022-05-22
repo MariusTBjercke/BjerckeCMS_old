@@ -6,7 +6,7 @@ use Bjercke\Entity\Article;
 use Bjercke\SqlConnection;
 use Bjercke\Tile;
 
-class ArticleList extends Tile {
+class ArticleListTile extends Tile {
 
     public function getArticles($limit = 5) {
         $em = SqlConnection::getInstance()->getEntityManager();

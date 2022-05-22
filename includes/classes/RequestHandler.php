@@ -13,7 +13,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
 use Forum;
 use FroalaEditor_Image;
-use NewTile;
+use NewTileTile;
 
 class RequestHandler {
     private SqlConnection $db;
@@ -420,7 +420,7 @@ class RequestHandler {
     }
 
     private function renderTileList() {
-        $tileList = NewTile::getInstance()->renderTileList();
+        $tileList = NewTileTile::getInstance()->renderTileList();
         echo $tileList;
     }
 

@@ -6,7 +6,7 @@ use Bjercke\Entity\Article;
 use Bjercke\SqlConnection;
 use Bjercke\Tile;
 
-class ArticleDisplay extends Tile {
+class ArticleDisplayTile extends Tile {
 
     /**
      * @throws Exception

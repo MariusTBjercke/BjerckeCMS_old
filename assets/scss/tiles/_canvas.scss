@@ -1,0 +1,14 @@
+.canvas {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__content {
+
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}

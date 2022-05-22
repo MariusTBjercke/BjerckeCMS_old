@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Bjercke\Tile;
 
-class SingleBillboard extends Tile {
+class SingleBillboardTile extends Tile {
     /**
      * @param string $imagePath Path to the image to display.
      * @return string Returns the image as HTML.
