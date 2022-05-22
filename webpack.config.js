@@ -14,12 +14,14 @@ const cleanFiles = false;
 
 const jsConfig = {
     resolve: {
+        extensions: ['.ts', '.js'],
         fallback: {
             "crypto": false
         },
     },
     entry: {
-        bundle: '/assets/js/index.ts'
+        bundle: '/assets/js/index.ts',
+        creative: '/assets/js/creative-index.ts'
     },
     output: {
         filename: 'assets/js/[name].min.js',
@@ -62,7 +64,7 @@ const jsConfig = {
 const cssConfig = {
     entry: {
         style: '/assets/scss/style.scss',
-        wysiwyg: '/assets/scss/wysiwyg.scss'
+        creative: '/assets/scss/creative.scss'
     },
     output: {
         filename: 'assets/js/[name].min.js',

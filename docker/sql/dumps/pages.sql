@@ -46,7 +46,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-INSERT INTO `pages` VALUES (1,'Home','17','24','default','home','Home/home.html.twig','Home',1,0,0,'18',1),(2,'Login','18','25','default','login','Login/login.html.twig','Login',1,0,1,'',1),(3,'Register','19','26','default','register','Register/register.html.twig','Register',1,0,1,NULL,1),(4,'Forum','20','27','default','forum','Forum/forum.html.twig','Forum',1,0,0,NULL,0),(5,'Profile','21','30','default','profile','Profile/profile.html.twig','Profile',1,1,0,'11',1),(6,'Admin','22','28','default','admin','Admin/admin.html.twig','Admin',1,1,0,NULL,0),(7,'PageBuilder','23','29','default','pagebuilder','PageBuilder/pagebuilder.html.twig','PageBuilder',1,1,0,NULL,0),(8,'EditArticles','45','45','default','editarticles','Admin/EditArticles/editarticles.html.twig','EditArticles',0,1,0,NULL,0),(9,'EditArticle','46','46','default','editarticle','Admin/EditArticle/editarticle.html.twig','EditArticle',0,1,0,NULL,0),(10,'Home2','17','24','default','home2','Home/home.html.twig','Home',0,0,0,'21',1);
+INSERT INTO `pages` VALUES (1,'Home','17','24','default','home','Home/home.html.twig','Home',1,0,0,'18',1),(2,'Login','18','25','default','login','Login/login.html.twig','Login',1,0,1,'',1),(3,'Register','19','26','default','register','Register/register.html.twig','Register',1,0,1,NULL,1),(4,'Forum','20','27','default','forum','Forum/forum.html.twig','Forum',1,0,0,NULL,0),(5,'Profile','21','30','default','profile','Profile/profile.html.twig','Profile',1,1,0,'11',1),(6,'Admin','22','28','default','admin','Admin/admin.html.twig','Admin',1,1,0,NULL,0),(7,'PageBuilder','23','29','default','pagebuilder','PageBuilder/pagebuilder.html.twig','PageBuilder',1,1,0,NULL,0),(8,'EditArticles','45','45','default','editarticles','Admin/EditArticles/editarticles.html.twig','EditArticles',0,1,0,NULL,0),(9,'EditArticle','46','46','default','editarticle','Admin/EditArticle/editarticle.html.twig','EditArticle',0,1,0,NULL,0),(10,'Canvas','48','48','default','canvas','Canvas/canvas.html.twig','CanvasPage',0,0,0,'21',1);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-22 10:57:21
+-- Dump completed on 2022-05-22 15:45:30
