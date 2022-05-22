@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
 --
 -- Host: localhost    Database: bjerckecms
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,15 +24,15 @@ DROP TABLE IF EXISTS `tiles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tiles` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `template_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
+  `template_path` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
+  `class_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_unicode_ci NOT NULL,
   `options` json NOT NULL,
   `article_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1C1584BB7294869C` (`article_id`),
   CONSTRAINT `FK_1C1584BB7294869C` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `tiles` (
 
 LOCK TABLES `tiles` WRITE;
 /*!40000 ALTER TABLE `tiles` DISABLE KEYS */;
-INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTile','null',NULL),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPage','null',NULL),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder','null',1),(15,'Single Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','null',1),(16,'Edit Tile','Pages/PageBuilder/edit.html.twig','PageBuilder','[]',NULL),(17,'New Article','Tiles/Articles/New/newarticle.html.twig','NewArticle','[]',NULL),(18,'Front Page Top Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboard','[]',22);
+INSERT INTO `tiles` VALUES (10,'New Tile','Tiles/Tools/NewTile/newtile.html.twig','NewTileTile','null',NULL),(11,'New Page','Tiles/Tools/NewPage/newpage.html.twig','NewPageTile','null',NULL),(12,'Page Builder','Pages/PageBuilder/builder.html.twig','PageBuilder','null',1),(15,'Single Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboardTile','null',1),(16,'Edit Tile','Pages/PageBuilder/edit.html.twig','PageBuilderTile','[]',NULL),(17,'New Article','Tiles/Articles/New/newarticle.html.twig','NewArticleTile','[]',NULL),(18,'Front Page Top Billboard','Tiles/Billboards/Single/singlebillboard.html.twig','SingleBillboardTile','[]',22),(21,'Canvas','Tiles/Fun/Canvas/canvas.html.twig','CanvasTile','[]',NULL);
 /*!40000 ALTER TABLE `tiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-13 16:02:27
+-- Dump completed on 2022-05-22 10:57:43
