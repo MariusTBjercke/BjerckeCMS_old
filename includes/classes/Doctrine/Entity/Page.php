@@ -4,6 +4,7 @@ namespace Bjercke\Entity;
 
 use Bjercke\Language\Language;
 use Bjercke\Site;
+use Bjercke\SqlConnection;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -285,5 +286,22 @@ class Page {
         $this->hideWhenLoggedIn = $hideWhenLoggedIn;
 
         return $this;
+    }
+
+    /**
+     * Create a new page object/instance from a page name.
+     *
+     * @param string $pageName The name of the page that can be found in the DB.
+     * @return Page|null Returns an instance of the page object or null if not found in DB.
+     */
+    public static function getInstanceFromName(string $pageName): Page|null {
+        $em = SqlConnection::getInstance()->getEntityManager();
+        $page = $em->getRepository(self::class)->findOneBy(['name' => $pageName]);
+
+        if ($page instanceof self) {
+            return $page;
+        }
+
+        return null;
     }
 }

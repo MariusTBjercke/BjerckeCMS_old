@@ -1,4 +1,8 @@
+// Tiles
 @use './tiles/canvas' as *;
+
+// Node modules
+@import '~bootstrap/scss/bootstrap-grid';
 
 body {
   margin: 0;

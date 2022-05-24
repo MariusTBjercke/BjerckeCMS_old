@@ -14,7 +14,12 @@ const cleanFiles = false;
 
 const jsConfig = {
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        alias: {
+            '@assets': __dirname + '/assets/',
+            '@tiles': __dirname + '/includes/classes/Tiles/',
+            '@pages': __dirname + '/includes/classes/Pages/',
+        },
         fallback: {
             "crypto": false
         },
@@ -33,7 +38,6 @@ const jsConfig = {
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
-                include: path.resolve(__dirname, 'assets/js'),
                 exclude: /node_modules/,
             },
             {

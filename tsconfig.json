@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es5",
-    "noImplicitAny": true,
-    "moduleResolution": "node"
+    "module": "esnext",
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@tiles/*": ["includes/classes/Tiles/*"],
+      "@pages/*": ["includes/classes/Pages/*"]
+    },
+    "moduleResolution": "Node",
+    "typeRoots": [
+      "node_modules/@types", "assets/types"
+    ],
+    "resolveJsonModule": true,
   },
   "exclude": [
     "node_modules"

@@ -26,7 +26,7 @@ class Site extends Singleton {
         $this->db = SqlConnection::getInstance();
         $this->currentUser = $this->setCurrentUser();
         $this->pages = $this->setPagesFromDb();
-        $this->currentPage = new Page(
+        $this->currentPage = Page::getInstanceFromName($this->pageName) ?? new Page(
             "Home", "Home", "Home", "default", "home", "Home/home.html.twig", "Home", true, false
         );
         $this->action = (new WebStorage('action'))->getSessionValue('');
@@ -252,7 +252,8 @@ class Site extends Singleton {
         $langStorage = new WebStorage('language');
         if (!$langStorage->getSessionSet()) {
             $langStorage->setSessionValue($language);
-            header("Location: /");
+            $pageUrl = $this->getPageName();
+            header("Location: /" . $pageUrl);
         }
     }
 
