@@ -1,7 +1,5 @@
 // Node modules
 import 'bootstrap';
-import 'htmx.org';
-import 'unpoly';
 
 // Pages
 import './pages/login';
@@ -22,11 +20,10 @@ import './tiles/new-article';
 import './tiles/new-page';
 import './tiles/new-tile';
 
-// @ts-ignore
-window.htmx = require('htmx.org');
+// Shared
+import './shared/preload';
 
 // Images
-// @ts-ignore
 import Favicon from '../svg/icons/favicon.svg';
 
 new Image(Favicon);

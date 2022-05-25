@@ -1,50 +1,56 @@
-up.compiler('.profile', (element) => {
-    /**
-     * File upload.
-     */
-    const submit = element.querySelector('#file-submit');
+import {DOMReady} from "@assets/js/shared/domready";
 
-    submit.addEventListener('click', uploadFile);
+DOMReady(() => {
+    const element = document.querySelector('.profile');
 
-    async function uploadFile() {
-        const fileInput = element.querySelector('#image-file');
-        const file = fileInput.files[0];
+    if (element) {
+        /**
+         * File upload.
+         */
+        const submit = element.querySelector('#file-submit');
 
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("action", "profile_upload");
+        submit.addEventListener('click', uploadFile);
 
-        const xhttp = new XMLHttpRequest();
+        async function uploadFile() {
+            const fileInput = element.querySelector('#image-file');
+            const file = fileInput.files[0];
 
-        xhttp.open("POST", "xmlhttprequest.php", true);
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("action", "profile_upload");
 
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                const response = this.responseText;
+            const xhttp = new XMLHttpRequest();
 
-                switch (response) {
-                    case '1':
-                        console.log('File uploaded successfully.');
-                        break;
-                    case '-1':
-                        console.log('Error: File is not an image.');
-                        break;
-                    case '-2':
-                        console.log('Error: File is too large.');
-                        break;
-                    case '-3':
-                        console.log('Error: File upload error.');
-                        break;
-                    default:
-                        console.log('Error: Unknown error.');
-                        break;
+            xhttp.open("POST", "xmlhttprequest.php", true);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    const response = this.responseText;
+
+                    switch (response) {
+                        case '1':
+                            console.log('File uploaded successfully.');
+                            break;
+                        case '-1':
+                            console.log('Error: File is not an image.');
+                            break;
+                        case '-2':
+                            console.log('Error: File is too large.');
+                            break;
+                        case '-3':
+                            console.log('Error: File upload error.');
+                            break;
+                        default:
+                            console.log('Error: Unknown error.');
+                            break;
+                    }
                 }
-            }
 
-            // Clear the file input.
-            fileInput.value = '';
-        };
+                // Clear the file input.
+                fileInput.value = '';
+            };
 
-        xhttp.send(formData);
+            xhttp.send(formData);
+        }
     }
 });

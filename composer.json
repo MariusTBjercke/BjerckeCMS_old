@@ -27,6 +27,7 @@
     "symfony/messenger": "^5.4",
     "symfony/console": "^5.4",
     "ext-imagick": "*",
-    "froala/wysiwyg-editor-php-sdk": "^4.0"
+    "froala/wysiwyg-editor-php-sdk": "^4.0",
+    "ext-zlib": "*"
   }
 }

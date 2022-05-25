@@ -32,6 +32,11 @@ $site->setLanguage('no');
 $site->setMultilingual(true);
 
 /**
+ * Add body preload class.
+ */
+$site->addBodyClass('preload');
+
+/**
  * Twig settings.
  */
 $pageRenderer = View::getInstance();

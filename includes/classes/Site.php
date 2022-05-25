@@ -19,6 +19,7 @@ class Site extends Singleton {
     private string $action;
     private SqlConnection $db;
     private bool $multilingual = true;
+    private array $bodyClasses = [];
 
     protected function __construct() {
         parent::__construct();
@@ -292,5 +293,17 @@ class Site extends Singleton {
 
     public function getLastVisitedPage() {
         return (new WebStorage('visited_pages'))->getLastValueInArray();
+    }
+
+    public function addBodyClass(string $class) {
+        $this->bodyClasses[] = $class;
+    }
+
+    public function getBodyClasses(): string
+    {
+        $classArray = $this->bodyClasses;
+
+        // Separate and convert to string
+        return implode(' ', $classArray);
     }
 }

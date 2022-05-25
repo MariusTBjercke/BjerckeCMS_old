@@ -29,7 +29,7 @@ services:
     restart: always
     volumes:
       - ./docker/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./docker/sql/dumps:/dumps
+      - ./includes/classes/Doctrine/Dumps:/dumps
       - db:/var/lib/mysql
       - ./docker/.bashrc:/root/.bashrc
     environment:

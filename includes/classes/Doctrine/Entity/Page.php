@@ -5,11 +5,13 @@ namespace Bjercke\Entity;
 use Bjercke\Language\Language;
 use Bjercke\Site;
 use Bjercke\SqlConnection;
+use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Exception;
 
 /**
  * @Entity
@@ -296,7 +298,13 @@ class Page {
      */
     public static function getInstanceFromName(string $pageName): Page|null {
         $em = SqlConnection::getInstance()->getEntityManager();
-        $page = $em->getRepository(self::class)->findOneBy(['name' => $pageName]);
+        $repository = $em->getRepository(self::class);
+
+        try {
+            $page = $repository->findOneBy(['name' => $pageName]);
+        } catch (Exception $e) {
+            return null;
+        }
 
         if ($page instanceof self) {
             return $page;

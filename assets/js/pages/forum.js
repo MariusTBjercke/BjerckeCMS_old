@@ -1,85 +1,90 @@
+import {DOMReady} from "@assets/js/shared/domready";
 import {ajaxPostJson} from '../functions/ajax.js';
 import {initFroala} from "../functions/froala";
 
-up.compiler('.forum', (element) => {
-    const submitBtn = element.querySelector("#submit");
-    const closeBtn = element.querySelector("#close");
-    const titleInput = element.querySelector("#title");
-    const contentInput = element.querySelector("#content");
-    const existingPosts = element.querySelectorAll(".forum__latest-posts-item");
-    const newPost = element.querySelector(".forum__new-post");
+DOMReady(() => {
+    const element = document.querySelector('.forum');
 
-    // Return if no new post block is found. User is probably not logged in.
-    if (!newPost) {
-        return;
-    }
+    if (element) {
+        const submitBtn = element.querySelector("#submit");
+        const closeBtn = element.querySelector("#close");
+        const titleInput = element.querySelector("#title");
+        const contentInput = element.querySelector("#content");
+        const existingPosts = element.querySelectorAll(".forum__latest-posts-item");
+        const newPost = element.querySelector(".forum__new-post");
 
-    // Initialize Froala editor.
-    initFroala(contentInput);
-
-
-    const newPostForm = element.querySelector(".forum__new-post-form");
-    const toggleBtn = element.querySelector(".forum__new-post-btn");
-
-    const buttons = [toggleBtn, closeBtn];
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            newPostForm.classList.toggle("forum__new-post-form_active");
-            toggleBtn.classList.toggle("hidden");
-        });
-    });
-
-    // Add listener for "enter" key.
-    // element.addEventListener("keydown", (e) => {
-    //     if (e.keyCode === 13) {
-    //         submitBtn.click();
-    //     }
-    // });
-
-    submitBtn.addEventListener('click', (e) => {
-        let formData = new FormData();
-        formData.append('action', 'forum_post');
-        formData.append('title', titleInput.value);
-        formData.append('content', contentInput.value);
-
-        function callback(response) {
-            // Add new post to the list.
-            const postsList = element.querySelector(".forum__latest-posts-list");
-            const existingPost = existingPosts[0];
-            const newPost = existingPost.cloneNode(true);
-            const newPostTitle = newPost.querySelector(".forum__latest-posts-item-title");
-            const newPostContent = newPost.querySelector(".forum__latest-posts-item-content");
-            const newPostAuthor = newPost.querySelector(".forum__latest-posts-item-info-author_field");
-            const newPostTimeAgo = newPost.querySelector(".forum__latest-posts-item-info-date_timeago");
-
-            // Remove hidden class from first post.
-            if (newPost.classList.contains("hidden")) {
-                newPost.classList.remove("hidden");
-            }
-
-            // Remove no posts-element if exists.
-            const noPosts = element.querySelector(".forum__no-posts");
-            if (noPosts) {
-                noPosts.remove();
-            }
-
-            newPostTitle.innerHTML = response['title'];
-            newPostContent.innerHTML = response['content'];
-            newPostAuthor.innerHTML = response['author'];
-            newPostTimeAgo.innerHTML = response['time_ago'];
-
-            postsList.prepend(newPost);
-
-            // Hide the form after submit.
-            if (newPostForm.classList.contains("forum__new-post-form_active")) {
-                newPostForm.classList.toggle("forum__new-post-form_active");
-                toggleBtn.classList.toggle("hidden");
-            }
-            editor.html.set("");
+        // Return if no new post block is found. User is probably not logged in.
+        if (!newPost) {
+            return;
         }
 
-        let inputArr = [titleInput, contentInput];
+        // Initialize Froala editor.
+        initFroala(contentInput);
 
-        ajaxPostJson(formData, inputArr, callback);
-    });
+
+        const newPostForm = element.querySelector(".forum__new-post-form");
+        const toggleBtn = element.querySelector(".forum__new-post-btn");
+
+        const buttons = [toggleBtn, closeBtn];
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                newPostForm.classList.toggle("forum__new-post-form_active");
+                toggleBtn.classList.toggle("hidden");
+            });
+        });
+
+// Add listener for "enter" key.
+// element.addEventListener("keydown", (e) => {
+//     if (e.keyCode === 13) {
+//         submitBtn.click();
+//     }
+// });
+
+        submitBtn.addEventListener('click', (e) => {
+            let formData = new FormData();
+            formData.append('action', 'forum_post');
+            formData.append('title', titleInput.value);
+            formData.append('content', contentInput.value);
+
+            function callback(response) {
+                // Add new post to the list.
+                const postsList = element.querySelector(".forum__latest-posts-list");
+                const existingPost = existingPosts[0];
+                const newPost = existingPost.cloneNode(true);
+                const newPostTitle = newPost.querySelector(".forum__latest-posts-item-title");
+                const newPostContent = newPost.querySelector(".forum__latest-posts-item-content");
+                const newPostAuthor = newPost.querySelector(".forum__latest-posts-item-info-author_field");
+                const newPostTimeAgo = newPost.querySelector(".forum__latest-posts-item-info-date_timeago");
+
+                // Remove hidden class from first post.
+                if (newPost.classList.contains("hidden")) {
+                    newPost.classList.remove("hidden");
+                }
+
+                // Remove no posts-element if exists.
+                const noPosts = element.querySelector(".forum__no-posts");
+                if (noPosts) {
+                    noPosts.remove();
+                }
+
+                newPostTitle.innerHTML = response['title'];
+                newPostContent.innerHTML = response['content'];
+                newPostAuthor.innerHTML = response['author'];
+                newPostTimeAgo.innerHTML = response['time_ago'];
+
+                postsList.prepend(newPost);
+
+                // Hide the form after submit.
+                if (newPostForm.classList.contains("forum__new-post-form_active")) {
+                    newPostForm.classList.toggle("forum__new-post-form_active");
+                    toggleBtn.classList.toggle("hidden");
+                }
+                editor.html.set("");
+            }
+
+            let inputArr = [titleInput, contentInput];
+
+            ajaxPostJson(formData, inputArr, callback);
+        });
+    }
 });
