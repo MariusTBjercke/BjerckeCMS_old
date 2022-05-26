@@ -1,13 +1,24 @@
-import {Sprite} from './Sprite';
 import {GameEntity} from "./GameEntity";
 
 export class Player extends GameEntity {
   private readonly keys: Array<string>;
   private readonly walkSpeed: number;
   private readonly runSpeed: number;
+  public data: any;
+  public currentAnimFrame: number;
+  private readonly frames: any;
 
-  constructor(position: any, size: any) {
+  constructor(data: any) {
+    const position = {
+      x: 0,
+      y: 0,
+    };
+    const size = {
+      width: data.frames[0].sourceSize.w,
+      height: data.frames[0].sourceSize.h,
+    };
     super(position, size);
+    this.data = data;
     this.moveSpeed = 3;
     this.walkSpeed = this.moveSpeed;
     this.runSpeed = 10;
@@ -15,12 +26,30 @@ export class Player extends GameEntity {
     this.gravity = 0.85;
     this.grounded = false;
     this.keys = [];
+    this.currentAnimFrame = 0;
+    this.frames = {
+      elapsed: 0,
+      max: 15,
+    };
     this.init();
   }
 
   public update(): void {
     this.playerMovement();
     this.worldBoundsCheck();
+    this.updateFrames();
+  }
+
+  private updateFrames(): void {
+    if (this.frames.elapsed < this.frames.max) {
+      this.frames.elapsed++;
+    }
+
+    this.updateAnimation();
+
+    if (this.frames.elapsed === this.frames.max) {
+      this.frames.elapsed = 0;
+    }
   }
 
   public collideY(): void {
@@ -38,7 +67,6 @@ export class Player extends GameEntity {
   }
 
   private playerMovement() {
-
     // Running
     if (this.keys["Shift"]) {
       this.moveSpeed = this.runSpeed;
@@ -82,14 +110,6 @@ export class Player extends GameEntity {
     this.velY *= this.friction;
   }
 
-  public setSprite(sprite: Sprite) {
-    this.sprite = sprite;
-  }
-
-  public setContext(ctx: CanvasRenderingContext2D) {
-    this.ctx = ctx;
-  }
-
   public init() {
     this.eventListeners();
   }
@@ -112,18 +132,27 @@ export class Player extends GameEntity {
     });
   }
 
-  public setMoveSpeed(amount: number) {
-    this.moveSpeed = amount;
+  public updateAnimation() {
+    if (Math.abs(this.velX) > 1 || Math.abs(this.velY) > 1) {
+      if (this.frames.elapsed === this.frames.max) {
+        this.currentAnimFrame++;
+        if (this.currentAnimFrame > this.data.frames.length - 2) {
+          this.currentAnimFrame = 0;
+        }
+      }
+    } else {
+      this.currentAnimFrame = 0;
+    }
   }
 
   public draw(ctx: CanvasRenderingContext2D) {
     if (this.flipX) {
       ctx.save();
       ctx.scale(-1, 1);
-      ctx.drawImage(this.sprite.image, -this.position.x - this.size.width, this.position.y, this.sprite.width, this.sprite.height);
+      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, this.data.frames[this.currentAnimFrame].frame.w, this.data.frames[this.currentAnimFrame].frame.h, -this.position.x - this.size.width, this.position.y, this.sprite.width, this.sprite.height);
       ctx.restore();
     } else {
-      ctx.drawImage(this.sprite.image, this.position.x, this.position.y, this.sprite.width, this.sprite.height);
+      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, this.data.frames[this.currentAnimFrame].frame.w, this.data.frames[this.currentAnimFrame].frame.h, this.position.x, this.position.y, this.sprite.width, this.sprite.height);
     }
   }
 

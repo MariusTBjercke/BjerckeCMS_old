@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ site.getAsset('css/style.min.css') }}">
     <link rel="icon" type="image/png" href="{{ site.getAsset('img/favicon.svg') }}">
 </head>
-<body>
+<body{% if site.getBodyClasses %} class="{{ site.getBodyClasses }}"{% endif %}>
 
 <main{% if mainCssOverride %} class="{{ mainCssOverride }}"{% endif %}>
 

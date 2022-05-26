@@ -9,9 +9,9 @@ import {GameEntity} from "./GameEntity";
 
 class Canvas {
     private canvas: HTMLCanvasElement;
-    private ctx: CanvasRenderingContext2D;
-    private width: number;
-    private height: number;
+    private readonly ctx: CanvasRenderingContext2D;
+    private readonly width: number;
+    private readonly height: number;
     private player: Player;
     private worldObjects: WorldObject[] = [];
     private gameEntities: GameEntity[] = [];
@@ -24,13 +24,7 @@ class Canvas {
         this.height = height;
         this.canvas.width = width;
         this.canvas.height = height;
-        // TODO: Implement JSON data
-        const playerData = require("@assets/img/canvas/spritesheet/player.json");
-        this.player = new Player({x: 0, y: 0}, {width: 77, height: 200});
-        this.player.position.x = this.width / 2 - this.player.size.width / 2;
-        this.player.position.y = this.height / 2 - this.player.size.height / 2;
-        this.player.setSprite(new Sprite(PlayerSheet, this.player.size.width, this.player.size.height));
-        this.player.setContext(this.ctx);
+        this.addPlayer();
         this.init();
     }
 
@@ -38,6 +32,15 @@ class Canvas {
         this.addGameEntities();
         this.addWorldObjects();
         this.setMap();
+    }
+
+    public addPlayer() {
+        const data = require("@assets/img/canvas/spritesheet/player.json");
+        this.player = new Player(data);
+        this.player.position.x = this.width / 2 - this.player.size.width / 2;
+        this.player.position.y = this.height / 2 - this.player.size.height / 2;
+        this.player.sprite = new Sprite(PlayerSheet, this.player.size.width, this.player.size.height);
+        this.player.ctx = this.ctx;
     }
 
     public start() {
@@ -96,25 +99,27 @@ class Canvas {
         const distanceTop = this.player.position.y;
         const distanceBottom = this.height - this.player.position.y - this.player.size.height;
 
-        const distance = 100;
+        // Set the distance from the player to the map boundaries
+        const distanceX = 350;
+        const distanceY = 200;
 
-        if (distanceRight <= distance && this.player.velX > 0) {
-            this.player.position.x = this.width - distance - this.player.size.width;
+        if (distanceRight <= distanceX && this.player.velX > 0) {
+            this.player.position.x = this.width - distanceX - this.player.size.width;
             this.currentMap.position.x += this.player.velX;
         }
 
-        if (distanceLeft <= distance && this.player.velX < 0) {
-            this.player.position.x = distance;
+        if (distanceLeft <= distanceX && this.player.velX < 0) {
+            this.player.position.x = distanceX;
             this.currentMap.position.x += this.player.velX;
         }
 
-        if (distanceTop <= distance && this.player.velY < 0) {
-            this.player.position.y = distance;
+        if (distanceTop <= distanceY && this.player.velY < 0) {
+            this.player.position.y = distanceY;
             this.currentMap.position.y += this.player.velY;
         }
 
-        if (distanceBottom <= distance && this.player.velY > 0) {
-            this.player.position.y = this.height - distance - this.player.size.height;
+        if (distanceBottom <= distanceY && this.player.velY > 0) {
+            this.player.position.y = this.height - distanceY - this.player.size.height;
             this.currentMap.position.y += this.player.velY;
         }
     }

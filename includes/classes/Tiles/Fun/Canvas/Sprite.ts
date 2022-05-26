@@ -15,8 +15,4 @@ export class Sprite {
     this.height = height;
     this.position = { x: 0, y: 0 };
   }
-
-  public setImage(imagePath: string) {
-    this.image.src = imagePath;
-  }
 }

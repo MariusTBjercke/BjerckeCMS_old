@@ -2,4 +2,4 @@
 import 'bootstrap';
 
 // Tiles
-import '@tiles/Fun/Canvas/canvas.ts';
+import '@tiles/Fun/Canvas/Canvas.ts';
