@@ -1,11 +1,9 @@
 <?php
 
-use Bjercke\Site;
+declare(strict_types=1);
+
 use Bjercke\Tile;
-use Doctrine\ORM\Exception\ORMException;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\TransactionRequiredException;
 
 class Home extends Tile {
-    
+
 }

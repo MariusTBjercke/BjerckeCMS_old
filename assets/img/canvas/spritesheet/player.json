@@ -2,35 +2,35 @@
 
 {
 	"filename": "Idle.png",
-	"frame": {"x":102,"y":1,"w":77,"h":200},
+	"frame": {"x":1,"y":1,"w":80,"h":130},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":200},
-	"sourceSize": {"w":77,"h":200}
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":130},
+	"sourceSize": {"w":80,"h":130}
 },
 {
 	"filename": "Walk1.png",
-	"frame": {"x":181,"y":1,"w":77,"h":200},
+	"frame": {"x":1,"y":133,"w":76,"h":130},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":77,"h":200},
-	"sourceSize": {"w":77,"h":200}
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":130},
+	"sourceSize": {"w":76,"h":130}
 },
 {
 	"filename": "Walk2.png",
-	"frame": {"x":1,"y":1,"w":99,"h":200},
+	"frame": {"x":1,"y":265,"w":76,"h":130},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":99,"h":200},
-	"sourceSize": {"w":99,"h":200}
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":130},
+	"sourceSize": {"w":76,"h":130}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "player.png",
 	"format": "RGBA8888",
-	"size": {"w":259,"h":202},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:26e21ba57d0a5735caf08ebf86d53ab4:d0b242287e980d728d867963fad05507:86d5339b780aedd87b35e2b7c0a7e11b$"
+	"size": {"w":82,"h":396},
+	"scale": "0.65",
+	"smartupdate": "$TexturePacker:SmartUpdate:f508ff009a0fc9b06bac25c1152b13ed:40bddbec80bd1294e9b87557c452f4e0:86d5339b780aedd87b35e2b7c0a7e11b$"
 }
 }

@@ -3,30 +3,38 @@
 
 {% block maincontent %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>{{ site.getString(38) }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <ul>
-                    <li><a href="/editarticles" class="admin__edit-articles">{{ site.getString(33) }}</a></li>
-                    <li><a href="/edittiles" class="admin__edit-tiles">{{ site.getString(34) }}</a></li>
-                </ul>
+    <div class="admin__navigation">
+        <div class="admin__navigation-content">
+            <div class="admin__navigation-item">
+                Test
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="admin__tile-container"></div>
+    <div class="admin__content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>{{ site.getString(38) }}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul>
+                        <li><a href="editarticles" class="admin__edit-articles">{{ site.getString(33) }}</a></li>
+                        <li><a href="edittiles" class="admin__edit-tiles">{{ site.getString(34) }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="admin__tile-container"></div>
+                </div>
             </div>
         </div>
     </div>
-
-{#    {{ site.renderTile(10) }}#}
 
 {% endblock %}

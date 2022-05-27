@@ -7,6 +7,7 @@ export class Player extends GameEntity {
   public data: any;
   public currentAnimFrame: number;
   private readonly frames: any;
+  private resetFrames: boolean;
 
   constructor(data: any) {
     const position = {
@@ -29,8 +30,10 @@ export class Player extends GameEntity {
     this.currentAnimFrame = 0;
     this.frames = {
       elapsed: 0,
-      max: 15,
+      maxWalk: 30,
+      maxRun: 15
     };
+    this.frames.max = this.frames.maxWalk;
     this.init();
   }
 
@@ -70,8 +73,14 @@ export class Player extends GameEntity {
     // Running
     if (this.keys["Shift"]) {
       this.moveSpeed = this.runSpeed;
+      if (this.frames.elapsed === 0) {
+        this.frames.max = this.frames.maxRun;
+      }
     } else {
       this.moveSpeed = this.walkSpeed;
+      if (this.frames.elapsed === 0) {
+        this.frames.max = this.frames.maxWalk;
+      }
     }
 
     if (this.keys["ArrowLeft"]) {
@@ -136,8 +145,8 @@ export class Player extends GameEntity {
     if (Math.abs(this.velX) > 1 || Math.abs(this.velY) > 1) {
       if (this.frames.elapsed === this.frames.max) {
         this.currentAnimFrame++;
-        if (this.currentAnimFrame > this.data.frames.length - 2) {
-          this.currentAnimFrame = 0;
+        if (this.currentAnimFrame > this.data.frames.length - 1) {
+          this.currentAnimFrame = 1;
         }
       }
     } else {
@@ -146,13 +155,20 @@ export class Player extends GameEntity {
   }
 
   public draw(ctx: CanvasRenderingContext2D) {
+    const width = this.data.frames[this.currentAnimFrame].frame.w;
+    const height = this.data.frames[this.currentAnimFrame].frame.h;
+    const scale = 1;
+
     if (this.flipX) {
       ctx.save();
-      ctx.scale(-1, 1);
-      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, this.data.frames[this.currentAnimFrame].frame.w, this.data.frames[this.currentAnimFrame].frame.h, -this.position.x - this.size.width, this.position.y, this.sprite.width, this.sprite.height);
+      ctx.scale(-scale, scale);
+      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, width, height, -this.position.x - width, this.position.y, width, height);
       ctx.restore();
     } else {
-      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, this.data.frames[this.currentAnimFrame].frame.w, this.data.frames[this.currentAnimFrame].frame.h, this.position.x, this.position.y, this.sprite.width, this.sprite.height);
+      ctx.save();
+      ctx.scale(scale, scale);
+      ctx.drawImage(this.sprite.image, this.data.frames[this.currentAnimFrame].frame.x, this.data.frames[this.currentAnimFrame].frame.y, width, height, this.position.x, this.position.y, width, height);
+      ctx.restore();
     }
   }
 
