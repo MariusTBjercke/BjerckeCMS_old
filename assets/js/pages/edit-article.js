@@ -9,7 +9,7 @@ DOMReady(() => {
         const submitBtn = element.querySelector('.edit-article__submit');
 
         // Initialize Froala editor.
-        initFroala(content);
+        const froala = initFroala(content);
 
         submitBtn.addEventListener('click', function (e) {
             const titleInput = element.querySelector('#title');

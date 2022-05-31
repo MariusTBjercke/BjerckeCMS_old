@@ -42,10 +42,6 @@ $site->addBodyClass('preload');
 $pageRenderer = View::getInstance();
 $tileRenderer = TileRenderer::getInstance();
 
-// Site helper object
-$pageRenderer->addGlobal('site', Site::getInstance());
-$tileRenderer->addGlobal('site', Site::getInstance());
-
 // Custom template paths
 $pageRenderer->addPath(__DIR__ . '/../assets/templates/layouts/components', 'components');
 $pageRenderer->addPath(__DIR__ . '/../assets/templates/layouts/grid', 'grid');

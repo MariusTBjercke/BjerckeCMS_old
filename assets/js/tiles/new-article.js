@@ -12,7 +12,7 @@ DOMReady(() => {
         const inputArr = [titleInput, contentInput];
 
         // Initialize Froala editor.
-        initFroala(contentInput);
+        const froala = initFroala(contentInput);
 
         submitBtn.addEventListener('click', (e) => {
             const backgroundCheck = element.querySelector('#background-image-checkbox');
@@ -28,6 +28,9 @@ DOMReady(() => {
 
             function callback(response) {
                 console.log(response);
+
+                // Clear editor.
+                froala.html.set('');
             }
 
             ajaxPostJson(formData, inputArr, callback);

@@ -2,14 +2,14 @@
 
 <dialog class="pagebuilder__modal" id="modal">
     <div class="pagebuilder__modal-content">
-        <h3>Select a page:</h3>
+        <h3>{{ site.getString('select_a_page') }}:</h3>
         <div class="pagebuilder__page-list">
             {% for p in tile.getEditablePages %}
-                <a href="{{ site.getUrl ~ 'pagebuilder/' ~ p.getUrl }}">{{ p.getName }}</a>
+                <a href="{{ site.getUrl('pagebuilder', p.getUrl) }}">{{ p.getName }}</a>
             {% endfor %}
         </div>
         <div class="pagebuilder__modal-close">
-            <button>Close</button>
+            <button>{{ site.getString('close') }}</button>
         </div>
     </div>
 </dialog>
@@ -22,7 +22,7 @@
 
 <div class="pagebuilder__form" data-page-id="{{ page.getId }}">
     <div class="pagebuilder__form-title">
-        <h5>Editing page: {{ page.getName }} <span>(Change)</span></h5>
+        <h5>{{ site.getString('editing_page') }}: {{ page.getName }} <span>(Change)</span></h5>
     </div>
     <div class="pagebuilder__form-tile-grid">
         {% if tile.getTileOrder is not empty %}
@@ -40,7 +40,7 @@
     <div class="pagebuilder__form-toolbox">
         <div class="pagebuilder__form-toolbox">
             <div class="new-page__form-toolbox-title">
-                <h5>Toolbox</h5>
+                <h5>{{ site.getString('toolbox') }}</h5>
             </div>
             <div class="pagebuilder__form-toolbox-list">
                 {% for tool in tile.getAllTiles %}
@@ -50,6 +50,6 @@
         </div>
     </div>
     <div class="pagebuilder__form-input">
-        <input type="submit" id="submit" name="submit" class="pagebuilder__submit" value="Save">
+        <input type="submit" id="submit" name="submit" class="pagebuilder__submit" value="{{ site.getString('save') }}">
     </div>
 </div>

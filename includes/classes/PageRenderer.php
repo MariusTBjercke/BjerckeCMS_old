@@ -48,8 +48,7 @@ class PageRenderer extends ViewRenderer {
                 header('Location: /');
             } else {
                 $class = call_user_func("$classString::getInstance");
-                $this->twig->addGlobal('tile', $class);
-                echo $this->twig->render($template);
+                echo $this->twig->render($template, ['site' => Site::getInstance(), 'tile' => $class]);
             }
         } catch (LoaderError|RuntimeError|SyntaxError $e) {
             echo "Error rendering: " . $e->getMessage();

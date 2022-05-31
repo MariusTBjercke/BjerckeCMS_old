@@ -29,8 +29,8 @@ class PageBuilder extends Tile {
     public function getPageToEdit(): Page|null {
         $pageNameStorage = new WebStorage('page_name');
 
-        if (isset($_REQUEST['name'])) {
-            $pageNameStorage->setSessionValue($_REQUEST['name']);
+        if (isset($_REQUEST['id'])) {
+            $pageNameStorage->setSessionValue($_REQUEST['id']);
         }
         $name = $pageNameStorage->getSessionValue("home");
         $em = $this->db->getEntityManager();

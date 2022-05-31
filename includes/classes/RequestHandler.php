@@ -76,6 +76,9 @@ class RequestHandler {
             case 'pagebuilder_save_tile':
                 $this->pageBuilderSaveTile();
                 break;
+            case 'get_language_string':
+                $this->getLanguageString();
+                break;
             default:
                 echo "Invalid action.";
                 break;
@@ -518,5 +521,12 @@ class RequestHandler {
         }
 
         $this->responseJson($response);
+    }
+
+    private function getLanguageString()
+    {
+        $string = $_REQUEST['string'];
+
+        echo Site::getInstance()->getString($string);
     }
 }

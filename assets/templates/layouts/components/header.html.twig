@@ -33,7 +33,7 @@
                         {% if user.getLoggedIn %}
                             <a href="logout"><i class="bi bi-door-open"></i> {{ site.getString(16) }}?</a>
                         {% endif %}
-                        {% if site.getMultilingual %}<a href="language/{{ site.getOppositeLanguageCode() }}"><i class="bi bi-globe"></i> {{ site.getOppositeLanguageCode(true) }}</a>{% endif %}
+                        {% if site.getMultilingual %}<a href="{{ site.getUrl('language', site.getOppositeLanguageCode) }}"><i class="bi bi-globe"></i> {{ site.getOppositeLanguageCode(true) }}</a>{% endif %}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import {DOMReady} from "@assets/js/shared/domready";
-import {ajaxPostJson} from '../functions/ajax.js';
+import {ajaxPostJson} from '../functions/ajax';
 import {initFroala} from "../functions/froala";
 
 DOMReady(() => {
@@ -19,7 +19,7 @@ DOMReady(() => {
         }
 
         // Initialize Froala editor.
-        initFroala(contentInput);
+        const froala = initFroala(contentInput);
 
 
         const newPostForm = element.querySelector(".forum__new-post-form");
@@ -79,7 +79,9 @@ DOMReady(() => {
                     newPostForm.classList.toggle("forum__new-post-form_active");
                     toggleBtn.classList.toggle("hidden");
                 }
-                editor.html.set("");
+
+                // Clear editor.
+                froala.html.set('');
             }
 
             let inputArr = [titleInput, contentInput];

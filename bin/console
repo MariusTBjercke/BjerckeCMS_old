@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Bjercke\Command\DumpCommand;
 use Bjercke\Command\ImportCommand;
 use Bjercke\SqlConnection;
 use Doctrine\Migrations\Tools\Console\Command as ConsoleCommand;

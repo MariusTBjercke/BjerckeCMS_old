@@ -1,17 +1,20 @@
 import {DOMReady} from "@assets/js/shared/domready";
 import {Sortable} from 'sortablejs';
 import {ajaxPostJson, renderTile} from "../functions/ajax";
+import {Language} from "@assets/js/shared/language";
 
-DOMReady(() => {
+DOMReady(async () => {
     const element = document.querySelector('.pagebuilder');
+
+    const language = new Language("no");
 
     if (element) {
         const builder = element.querySelector('.pagebuilder__builder');
 
         // Render page builder
-        renderTile(12, builder, builderScript);
+        await renderTile(12, builder, builderScript);
 
-        function builderScript() {
+        async function builderScript() {
             const tileGrid = element.querySelector('.pagebuilder__form-tile-grid');
             const form = element.querySelector('.pagebuilder__form');
             const submit = element.querySelector('#submit');
@@ -19,12 +22,12 @@ DOMReady(() => {
             const removeBtns = element.querySelectorAll('.pagebuilder__remove-btn');
             let tempOrder = getTileOrder();
 
-            function emptyCheck() {
+            async function emptyCheck() {
                 // Check if tile grid has any children
                 if (tileGrid.children.length <= 0) {
                     const emptyMessage = document.createElement('div');
                     emptyMessage.classList.add('pagebuilder__empty-message');
-                    emptyMessage.innerHTML = '<p>You have not added any tiles yet. Start by dragging a tile here from the toolbox underneath.</p>';
+                    emptyMessage.innerHTML = '<p>' + await language.getLanguageString("no_tiles_yet") + '</p>';
                     tileGrid.appendChild(emptyMessage);
                     tempOrder = [];
                 } else {
@@ -35,7 +38,7 @@ DOMReady(() => {
                 }
             }
 
-            emptyCheck();
+            await emptyCheck();
 
             removeBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {

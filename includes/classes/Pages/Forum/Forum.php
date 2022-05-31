@@ -17,12 +17,17 @@ class Forum extends Tile {
     /**
      * Get the latest posts from the database and instantiate post objects.
      *
-     * @return array Array of post objects.
+     * @return array|null Array of post objects.
      */
-    public function getLatestPosts(int $limit = null): array {
+    public function getLatestPosts(int $limit = null): array|null {
         $entityManager = $this->db->getEntityManager();
+        $posts = $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], $limit);
 
-        return $entityManager->getRepository(Post::class)->findBy([], ['id' => 'DESC'], $limit);
+        if (is_array($posts)) {
+            return $posts;
+        }
+
+        return null;
     }
 
     /**

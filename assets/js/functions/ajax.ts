@@ -13,10 +13,12 @@ function ajaxPostJson(formData, inputArr, callback) {
         response.json().then(data => {
             callback(data);
 
-            // Clear the form
-            inputArr.forEach(input => {
-                input.value = '';
-            });
+            // Clear the form if input array is not null
+            if (inputArr !== null) {
+                inputArr.forEach(input => {
+                    input.value = '';
+                });
+            }
         });
     });
 }
@@ -29,10 +31,12 @@ function ajaxPostHtml(formData, inputArr, callback) {
         response.text().then(data => {
             callback(data);
 
-            // Clear the form
-            inputArr.forEach(input => {
-                input.value = '';
-            });
+            // Clear the form if input array is not null
+            if (inputArr !== null) {
+                inputArr.forEach(input => {
+                    input.value = '';
+                });
+            }
         });
     });
 }

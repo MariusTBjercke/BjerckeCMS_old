@@ -6,7 +6,8 @@
   position: relative;
   flex-direction: column;
   gap: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 
   &__draggable {
     @include mixin.draggable-bar;

@@ -5,11 +5,18 @@ Options +FollowSymlinks
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+# URL rewriting
+RewriteRule ^editarticle/([A-Za-z_0-9\-]+)$ /index.php?page=editarticle&id=$1 [QSA]
+RewriteRule ^editarticle/([A-Za-z_0-9\-]+)/$ /index.php?page=editarticle&id=$1 [QSA]
+
+RewriteRule ^pagebuilder/([A-Za-z_0-9\-]+)$ /index.php?page=pagebuilder&id=$1 [QSA]
+RewriteRule ^pagebuilder/([A-Za-z_0-9\-]+)/$ /index.php?page=pagebuilder&id=$1 [QSA]
+
 RewriteRule ^([A-Za-z_0-9\-]+)$ /index.php?page=$1 [QSA]
 RewriteRule ^([A-Za-z_0-9\-]+)/$ /index.php?page=$1 [QSA]
+
 RewriteRule ^([A-Za-z_0-9\-]+)/([A-Za-z_0-9\-]+)$ /index.php?page=$1&name=$2 [QSA]
 RewriteRule ^([A-Za-z_0-9\-]+)/([A-Za-z_0-9\-]+)/$ /index.php?page=$1&name=$2 [QSA]
-
 
 # Cache static assets
 <IfModule mod_expires.c>

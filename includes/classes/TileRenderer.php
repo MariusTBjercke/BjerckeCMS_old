@@ -36,13 +36,12 @@ class TileRenderer extends ViewRenderer {
      */
     public function render(): void {
         $class = call_user_func("$this->className::getInstance");
-        $this->twig->addGlobal('tile', $class);
         if ($this->getArticle() instanceof Article) {
             $this->twig->addGlobal('article', $this->getArticle());
         }
 
         try {
-            echo $this->twig->render($this->templatePath);
+            echo $this->twig->render($this->templatePath, ['site' => Site::getInstance(), 'tile' => $class]);
         } catch (LoaderError|RuntimeError|SyntaxError $e) {
             echo "Error rendering: " . $e->getMessage();
         }

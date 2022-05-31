@@ -80,15 +80,19 @@ class Site extends Singleton {
     }
 
     /**
-     * @param string $path Path to the page
-     * @return string
+     * Returns a URL with the current protocol
+     *
+     * @param string $f1 File/path to include in URL
+     * @param string|null $f2 Second file/path to concatenate in URL
+     *
+     * @return string Example: /editarticle or /editarticle/22
      */
-    public function getUrl(string $path = ''): string {
+    public function getUrl(string $f1 = '', string $f2 = null): string {
         $isSecure = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
             || $_SERVER['SERVER_PORT'] === 443);
         $protocol = $isSecure ? 'https://' : 'http://';
 
-        return $protocol . $_SERVER['HTTP_HOST'] . '/' . $path;
+        return $protocol . $_SERVER['HTTP_HOST'] . '/' . $f1 . ($f2 ? '/' . $f2 : '');
     }
 
     public function getAsset(string $assetPath): string {

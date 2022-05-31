@@ -13,10 +13,10 @@
                             <div class="edit-articles__list-item">
                                 <div class="edit-articles__list-item_title">{{ article.getTitle }}</div>
                                 <div class="edit-articles__list-item_icons">
-                                    <a href="{{ site.getUrl('editarticle') }}?id={{ article.getId }}" class="edit-articles__list-item_icon">
+                                    <a href="{{ site.getUrl('editarticle', article.getId) }}" class="edit-articles__list-item_icon">
                                         Edit
                                     </a>
-                                    <a href="{{ site.getUrl('deletearticle') }}?id={{ article.getId }}" class="edit-articles__list-item_icon">
+                                    <a href="{{ site.getUrl('deletearticle', article.getId) }}" class="edit-articles__list-item_icon">
                                         Delete
                                     </a>
                                 </div>
