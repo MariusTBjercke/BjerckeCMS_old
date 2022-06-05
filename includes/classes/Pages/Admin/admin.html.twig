@@ -5,8 +5,13 @@
 
     <div class="admin__navigation">
         <div class="admin__navigation-content">
-            <div class="admin__navigation-item">
-                Test
+            <div class="admin__navigation-items">
+                <a href="editarticles" class="admin__navigation-item">
+                    <i class="bi bi-card-list"></i> {{ site.getString(33) }}
+                </a>
+                <a href="edittiles" class="admin__navigation-item">
+                    <i class="bi bi-card-list"></i> {{ site.getString(34) }}
+                </a>
             </div>
         </div>
     </div>
@@ -20,10 +25,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <ul>
-                        <li><a href="editarticles" class="admin__edit-articles">{{ site.getString(33) }}</a></li>
-                        <li><a href="edittiles" class="admin__edit-tiles">{{ site.getString(34) }}</a></li>
-                    </ul>
+                    <p>{{ site.getString('navigate_with_left_menu') }}</p>
                 </div>
             </div>
         </div>
