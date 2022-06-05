@@ -1,5 +1,5 @@
 import {DOMReady} from "@assets/js/shared/domready";
-import {initFroala} from "../functions/froala";
+import {initFroala} from "@assets/js/functions/froala";
 
 DOMReady(() => {
     const element = document.querySelector('.edit-article');

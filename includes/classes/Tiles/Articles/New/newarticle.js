@@ -1,6 +1,6 @@
 import {DOMReady} from "@assets/js/shared/domready";
-import {initFroala} from "../functions/froala";
-import {ajaxPostJson} from "../functions/ajax";
+import {initFroala} from "@assets/js/functions/froala";
+import {ajaxPostJson} from "@assets/js/functions/ajax";
 
 DOMReady(() => {
     const element = document.querySelector('.new-article');

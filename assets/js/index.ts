@@ -8,7 +8,7 @@ import './pages/profile';
 import './pages/forum';
 import './pages/admin';
 import './pages/pagebuilder';
-import './pages/edit-article';
+import '@pages/Admin/EditArticle/editarticle';
 
 // Components
 import './components/header';
@@ -16,9 +16,9 @@ import './components/footer';
 import './components/alert';
 
 // Tiles
-import './tiles/new-article';
-import './tiles/new-page';
-import './tiles/new-tile';
+import '@tiles/Articles/New/newarticle';
+import '@tiles/Tools/NewPage/newpage';
+import '@tiles/Tools/NewTile/newtile';
 
 // Shared
 import './shared/preload';

@@ -1,5 +1,5 @@
 import {DOMReady} from "@assets/js/shared/domready";
-import {ajaxPostJson, ajaxPostHtml} from '../functions/ajax';
+import {ajaxPostJson, ajaxPostHtml} from '@assets/js/functions/ajax';
 
 DOMReady(() => {
     const element = document.querySelector('.new-tile');
