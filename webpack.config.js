@@ -66,6 +66,13 @@ const jsConfig = {
 };
 
 const cssConfig = {
+    resolve: {
+        alias: {
+            '@assets': __dirname + '/assets/',
+            '@tiles': __dirname + '/includes/classes/Tiles/',
+            '@pages': __dirname + '/includes/classes/Pages/',
+        },
+    },
     entry: {
         style: '/assets/scss/style.scss',
         creative: '/assets/scss/creative.scss'

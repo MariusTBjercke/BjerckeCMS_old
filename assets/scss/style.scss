@@ -9,10 +9,10 @@
 @use 'pages/edit-article' as *;
 
 // Tiles
-@use 'tiles/new-article' as *;
-@use 'tiles/new-page' as *;
-@use 'tiles/new-tile' as *;
-@use 'tiles/billboard' as *;
+@use '~@tiles/Articles/New/newarticle' as *;
+@use '~@tiles/Tools/NewPage/newpage' as *;
+@use '~@tiles/Tools/NewTile/newtile' as *;
+@use '~@tiles/Billboards/Single/billboard' as *;
 
 // Components
 @use 'components/header' as *;
@@ -29,7 +29,6 @@
 @import '~bootstrap/scss/alert';
 @import '~bootstrap/scss/badge';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
-@import '~unpoly/unpoly';
 @import '~froala-editor/css/froala_editor';
 @import '~froala-editor/css/froala_editor.pkgd';
 @import '~froala-editor/css/plugins.pkgd';

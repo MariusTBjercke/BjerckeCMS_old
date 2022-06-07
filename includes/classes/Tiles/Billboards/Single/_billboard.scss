@@ -1,4 +1,4 @@
-@use '../variables' as var;
+@use '~@assets/scss/variables' as var;
 
 .billboard {
   display: flex;
@@ -13,7 +13,7 @@
       height: 100%;
 
       img {
-        max-width: 100%;
+        width: 100%;
 
         &:before {
           content: '';

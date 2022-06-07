@@ -1,5 +1,5 @@
 // Tiles
-@use './tiles/canvas' as *;
+@use '~@tiles/Fun/Canvas/_canvas' as *;
 
 // Node modules
 @import '~bootstrap/scss/bootstrap-grid';
