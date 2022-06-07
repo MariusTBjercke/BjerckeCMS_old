@@ -9,6 +9,7 @@ import './pages/forum';
 import './pages/admin';
 import './pages/pagebuilder';
 import '@pages/Admin/EditArticle/editarticle';
+import '@pages/Home/home';
 
 // Components
 import './components/header';

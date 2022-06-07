@@ -7,6 +7,7 @@
 @use 'pages/pagebuilder' as *;
 @use 'pages/edit-articles' as *;
 @use 'pages/edit-article' as *;
+@use '~@pages/Home/home' as *;
 
 // Tiles
 @use '~@tiles/Articles/New/newarticle' as *;
@@ -33,6 +34,7 @@
 @import '~froala-editor/css/froala_editor.pkgd';
 @import '~froala-editor/css/plugins.pkgd';
 @import '~froala-editor/css/themes/gray';
+@import '~plyr/dist/plyr.css';
 
 body, html {
   margin: 0;

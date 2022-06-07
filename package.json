@@ -38,6 +38,7 @@
     "froala-editor": "^4.0.10",
     "htmx.org": "^1.7.0",
     "jquery": "^3.6.0",
+    "plyr": "^3.7.2",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.15.0",
     "unpoly": "^2.5.2"
