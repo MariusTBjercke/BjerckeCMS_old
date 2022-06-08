@@ -76,7 +76,11 @@ class Site extends Singleton {
      */
     public function getString(int|string $string): string
     {
-        return $this->getLanguage()->getString($string);
+        try {
+            return $this->getLanguage()->getString($string);
+        } catch (Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
     }
 
     /**

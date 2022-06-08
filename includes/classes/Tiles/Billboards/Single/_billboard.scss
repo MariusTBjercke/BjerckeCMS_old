@@ -1,15 +1,10 @@
 @use '~@assets/scss/variables' as var;
 
 .billboard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   &__wrapper {
     position: relative;
     width: 100%;
-    max-height: 400px;
+    max-height: 225px;
 
     figure {
       max-height: inherit;
@@ -30,32 +25,85 @@
         }
       }
     }
+
+    @media screen and (max-width: var.$breakpoint-md) {
+      max-height: 175px;
+    }
+
+    @media screen and (max-width: var.$breakpoint-sm) {
+      max-height: 125px;
+    }
   }
 
   &__content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     z-index: 1;
-    color: var.$font-color-bg;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      gap: 30px;
+    }
 
     &-bubble {
+      &-wrapper {
+        position: relative;
+        width: 170px;
+        height: 170px;
+      }
+
+      position: absolute;
+      top: 52px;
+      left: 0;
+      background: url('~@assets/img/billboard/marius-profile.jpg') no-repeat center center;
+      background-size: cover;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      box-shadow: 1px 1px 1px 1px black;
+
+      @media screen and (max-width: var.$breakpoint-lg) {
+        &-wrapper {
+          width: 140px;
+          height: 140px;
+        }
+
+        top: 43px;
+      }
+
+      @media screen and (max-width: var.$breakpoint-md) {
+        &-wrapper {
+          width: 110px;
+          height: 110px;
+        }
+
+        top: 52px;
+      }
+    }
+
+    &-info-box {
+      position: relative;
       background: rgba(0, 0, 0, .75);
-      border-radius: 1em;
-      padding: 40px;
+      border-radius: 1em 1em 0 0;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 60vw;
+      flex: 1;
 
       p {
         margin: 0;
+        color: #ffffff;
       }
 
       h2 {
@@ -79,51 +127,6 @@
           to {
             opacity: 1;
           }
-        }
-      }
-    }
-
-    @media screen and (max-width: 900px) {
-      &-bubble {
-        width: 70vw;
-        padding: 20px;
-
-        p {
-          font-size: 0.8em;
-        }
-
-        h2 {
-          font-size: 1.5em;
-
-          &:after {
-            width: 12px;
-            height: 3px;
-          }
-        }
-      }
-    }
-
-    @media screen and (max-width: 620px) {
-      &-bubble {
-        p {
-          font-size: 0.7em;
-        }
-
-        h2 {
-          font-size: 1.2em;
-
-          &:after {
-            width: 10px;
-            height: 2px;
-          }
-        }
-      }
-    }
-
-    @media screen and (max-width: 530px) {
-      &-bubble {
-        p {
-          display: none;
         }
       }
     }

@@ -8,6 +8,7 @@ use Bjercke\WebStorage;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
+use Exception;
 
 class Language
 {
@@ -25,29 +26,40 @@ class Language
      * @throws OptimisticLockException
      * @throws TransactionRequiredException
      * @throws ORMException
+     * @throws Exception
      */
-    public function getString(int|string $string): string {
+    public function getString(int|string $string): string
+    {
         $em = $this->db->getEntityManager();
 
         // If the parameter is a string, look for alias. If not, look for id.
         if (is_string($string)) {
-            $string = $em->getRepository(LanguageString::class)->findOneBy(['alias' => $string]);
+            $result = $em->getRepository(LanguageString::class)->findOneBy(['alias' => $string]);
         } else {
-            $string = $em->find(LanguageString::class, $string);
+            $result = $em->find(LanguageString::class, $string);
+        }
+
+        if ($result === null) {
+            if (is_string($string)) {
+                throw new Exception("Language string with alias '$string' not found.");
+            } else {
+                throw new Exception("Language string with ID '$string' not found.");
+            }
         }
 
         if ($this->getLanguage() === 'en') {
-            return $string->getEn();
+            return $result->getEn();
         }
 
         if ($this->getLanguage() === 'no') {
-            return $string->getNo();
+            return $result->getNo();
         }
 
-        return $string->getEn();
+        return $result->getEn();
     }
 
-    public function getLanguageCode($upperCase = false): string {
+    public function getLanguageCode($upperCase = false): string
+    {
         if ($upperCase) {
             return strtoupper($this->getLanguage());
         }
@@ -55,7 +67,8 @@ class Language
         return $this->language;
     }
 
-    public function getOppositeLanguageCode($upperCase = false): string {
+    public function getOppositeLanguageCode($upperCase = false): string
+    {
         if ($this->getLanguage() === 'en') {
             if ($upperCase) {
                 return strtoupper('no');

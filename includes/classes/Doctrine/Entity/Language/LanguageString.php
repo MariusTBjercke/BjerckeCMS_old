@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
+use Exception;
 
 /**
  * @Entity
@@ -83,6 +84,7 @@ class LanguageString {
 
     /**
      * @return string
+     * @throws Exception
      */
     public function getNo(): string
     {
@@ -101,6 +103,7 @@ class LanguageString {
 
     /**
      * @return string
+     * @throws Exception
      */
     public function getEn(): string
     {

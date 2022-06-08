@@ -6,11 +6,14 @@ use Bjercke\Language\Language;
 use Bjercke\Site;
 use Bjercke\DatabaseManager;
 use Doctrine\DBAL\Exception\TableNotFoundException;
+use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\TransactionRequiredException;
 use Exception;
 
 /**
@@ -159,6 +162,11 @@ class Page {
         return $this->description;
     }
 
+    /**
+     * @throws OptimisticLockException
+     * @throws TransactionRequiredException
+     * @throws ORMException
+     */
     public function getDescriptionString(): string {
         return (new Language())->getString((int) $this->description);
     }

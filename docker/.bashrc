@@ -16,3 +16,6 @@ alias l='ls $LS_OPTIONS -lA'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+# Alias for Windows PowerShell. Lists all files in a directory.
+alias lll='dir -lA'
