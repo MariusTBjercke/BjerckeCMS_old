@@ -1,4 +1,4 @@
-@use '../mixins';
+@use '~@assets/scss/mixins';
 
 .register-form {
   @include mixins.form-style;

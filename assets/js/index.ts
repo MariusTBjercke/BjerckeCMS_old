@@ -2,19 +2,19 @@
 import 'bootstrap';
 
 // Pages
-import './pages/login';
-import './pages/register';
-import './pages/profile';
-import './pages/forum';
-import './pages/admin';
-import './pages/pagebuilder';
+import '@pages/Login/login';
+import '@pages/Register/register';
+import '@pages/Profile/profile';
+import '@pages/Forum/forum';
+import '@pages/Admin/admin';
+import '@pages/PageBuilder/pagebuilder';
 import '@pages/Admin/EditArticle/editarticle';
 import '@pages/Home/home';
 
 // Components
-import './components/header';
-import './components/footer';
-import './components/alert';
+import '@assets/js/components/header';
+import '@assets/js/components/footer';
+import '@assets/js/components/alert';
 
 // Tiles
 import '@tiles/Articles/New/newarticle';

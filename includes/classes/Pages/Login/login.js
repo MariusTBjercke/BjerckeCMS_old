@@ -1,5 +1,5 @@
 import {DOMReady} from "@assets/js/shared/domready";
-import {ajaxPostJson} from '../functions/ajax';
+import {ajaxPostJson} from '@assets/js/functions/ajax';
 
 DOMReady(() => {
     const element = document.querySelector('.login-form');

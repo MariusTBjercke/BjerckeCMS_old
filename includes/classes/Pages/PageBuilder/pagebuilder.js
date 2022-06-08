@@ -1,6 +1,6 @@
 import {DOMReady} from "@assets/js/shared/domready";
 import {Sortable} from 'sortablejs';
-import {ajaxPostJson, renderTile} from "../functions/ajax";
+import {ajaxPostJson, renderTile} from "@assets/js/functions/ajax";
 import {Language} from "@assets/js/shared/language";
 
 DOMReady(async () => {

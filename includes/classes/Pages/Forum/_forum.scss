@@ -1,5 +1,5 @@
-@use '../variables' as *;
-@use '../mixins' as mixin;
+@use '~@assets/scss/variables' as *;
+@use '~@assets/scss/mixins' as mixin;
 
 $forum-bg-color: rgba(255, 255, 255, 1);
 $forum-border-color: #000000;

@@ -1,5 +1,5 @@
-@use '../mixins' as mixin;
-@use '../variables' as var;
+@use '~@assets/scss/mixins' as mixin;
+@use '~@assets/scss/variables' as var;
 
 .pagebuilder {
   display: flex;

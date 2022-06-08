@@ -1,12 +1,12 @@
 // Pages
-@use 'pages/register' as *;
-@use 'pages/login' as *;
-@use 'pages/profile' as *;
-@use 'pages/forum' as *;
-@use 'pages/admin' as *;
-@use 'pages/pagebuilder' as *;
-@use 'pages/edit-articles' as *;
-@use 'pages/edit-article' as *;
+@use '~@pages/Register/register' as *;
+@use '~@pages/Login/login' as *;
+@use '~@pages/Profile/profile' as *;
+@use '~@pages/Forum/forum' as *;
+@use '~@pages/Admin/admin' as *;
+@use '~@pages/PageBuilder/pagebuilder' as *;
+@use '~@pages/Admin/EditArticles/editarticles' as *;
+@use '~@pages/Admin/EditArticle/editarticle' as *;
 @use '~@pages/Home/home' as *;
 
 // Tiles
@@ -16,11 +16,11 @@
 @use '~@tiles/Billboards/Single/billboard' as *;
 
 // Components
-@use 'components/header' as *;
-@use 'components/footer' as *;
-@use 'components/alert' as *;
-@use 'components/buttons' as *;
-@use 'shared' as *;
+@use '~@assets/scss/components/header' as *;
+@use '~@assets/scss/components/footer' as *;
+@use '~@assets/scss/components/alert' as *;
+@use '~@assets/scss/components/buttons' as *;
+@use '~@assets/scss/shared' as *;
 
 // Node modules
 @import '~bootstrap/scss/mixins';
