@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Bjercke\Command\DumpCommand;
 use Bjercke\Command\ImportCommand;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Doctrine\Migrations\Tools\Console\Command as ConsoleCommand;
 use Doctrine\ORM\Tools\Console\Command as ORMCommand;
 use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
@@ -24,7 +24,7 @@ $cli->setCatchExceptions(true);
 
 $config = new PhpFile(__DIR__ . '/../migrations.php');
 
-$connectionParams = SqlConnection::getInstance()->getConnectionParams();
+$connectionParams = DatabaseManager::getInstance()->getConnectionParams();
 
 $entityManager = EntityManager::create(
     $connectionParams,

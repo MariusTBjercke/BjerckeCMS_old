@@ -1,7 +1,7 @@
 <?php
 
 use Bjercke\Entity\Article;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Bjercke\Tile;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;

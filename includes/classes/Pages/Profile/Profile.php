@@ -2,7 +2,7 @@
 
 use Bjercke\Entity\User;
 use Bjercke\Exception\NotLoggedInException;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Bjercke\Tile;
 
 class Profile extends Tile {

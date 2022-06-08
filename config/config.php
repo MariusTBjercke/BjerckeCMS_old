@@ -4,7 +4,7 @@ session_start();
 
 use Bjercke\Entity\User;
 use Bjercke\Site;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Bjercke\PageRenderer as View;
 use Bjercke\TileRenderer;
 use Bjercke\TwigExtensions as TwigExtension;

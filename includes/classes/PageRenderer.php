@@ -29,7 +29,7 @@ class PageRenderer extends ViewRenderer {
         $site->storeVisitedPage();
 
         // Find corresponding page
-        $em = SqlConnection::getInstance()->getEntityManager();
+        $em = DatabaseManager::getInstance()->getEntityManager();
         $page = $em->getRepository(Page::class)->findOneBy(['name' => $pageName]);
 
         if ($page instanceof Page) {

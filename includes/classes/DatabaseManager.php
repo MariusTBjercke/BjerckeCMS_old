@@ -12,9 +12,9 @@ use Exception;
 use Singleton;
 
 /**
- * BjerckeCMS SQL connection class.
+ * BjerckeCMS SQL/Database manager class.
  */
-class SqlConnection extends Singleton {
+class DatabaseManager extends Singleton {
     private static array $instances = [];
     private string $hostname;
     private string $username;

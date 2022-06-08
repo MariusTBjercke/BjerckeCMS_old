@@ -2,11 +2,11 @@
 
 use Bjercke\Entity\User;
 use Bjercke\Site;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 
 require_once(__DIR__ . '/../vendor/autoload.php');
 
-$em = SqlConnection::getInstance()->getEntityManager();
+$em = DatabaseManager::getInstance()->getEntityManager();
 
 $currentUser = Site::getInstance()->getCurrentUser();
 

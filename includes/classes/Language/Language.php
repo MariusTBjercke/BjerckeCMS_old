@@ -3,7 +3,7 @@
 namespace Bjercke\Language;
 
 use Bjercke\Entity\Language\LanguageString;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Bjercke\WebStorage;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
@@ -11,12 +11,12 @@ use Doctrine\ORM\TransactionRequiredException;
 
 class Language
 {
-    private SqlConnection $db;
+    private DatabaseManager $db;
     private string $language;
 
     public function __construct()
     {
-        $this->db = SqlConnection::getInstance();
+        $this->db = DatabaseManager::getInstance();
         $storage = new WebStorage('language');
         $this->language = $storage->getValue();
     }

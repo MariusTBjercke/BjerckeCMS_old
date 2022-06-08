@@ -1,11 +1,11 @@
 <?php
 
 use Bjercke\Entity\User;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 
 require(__DIR__ . '/../../vendor/autoload.php');
 
-$db = SqlConnection::getInstance();
+$db = DatabaseManager::getInstance();
 
 $em = $db->getEntityManager();
 

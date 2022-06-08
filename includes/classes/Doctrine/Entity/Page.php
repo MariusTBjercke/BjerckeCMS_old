@@ -4,7 +4,7 @@ namespace Bjercke\Entity;
 
 use Bjercke\Language\Language;
 use Bjercke\Site;
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -297,7 +297,7 @@ class Page {
      * @return Page|null Returns an instance of the page object or null if not found in DB.
      */
     public static function getInstanceFromName(string $pageName): Page|null {
-        $em = SqlConnection::getInstance()->getEntityManager();
+        $em = DatabaseManager::getInstance()->getEntityManager();
         $repository = $em->getRepository(self::class);
 
         try {

@@ -16,10 +16,10 @@ use FroalaEditor_Image;
 use NewTileTile;
 
 class RequestHandler {
-    private SqlConnection $db;
+    private DatabaseManager $db;
 
     public function __construct() {
-        $this->db = SqlConnection::getInstance();
+        $this->db = DatabaseManager::getInstance();
     }
 
     /**

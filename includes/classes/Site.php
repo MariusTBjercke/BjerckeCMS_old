@@ -17,14 +17,14 @@ class Site extends Singleton {
     private User $currentUser;
     private array $pages;
     private string $action;
-    private SqlConnection $db;
+    private DatabaseManager $db;
     private bool $multilingual = true;
     private array $bodyClasses = [];
 
     protected function __construct() {
         parent::__construct();
         $this->pageName = $_GET['page'] ?? 'home';
-        $this->db = SqlConnection::getInstance();
+        $this->db = DatabaseManager::getInstance();
         $this->currentUser = $this->setCurrentUser();
         $this->pages = $this->setPagesFromDb();
         $this->currentPage = Page::getInstanceFromName($this->pageName) ?? new Page(

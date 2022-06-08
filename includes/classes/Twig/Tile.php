@@ -10,12 +10,12 @@ use Singleton;
  * Parent class for Twig template tiles.
  */
 class Tile extends Singleton {
-    protected SqlConnection $db;
+    protected DatabaseManager $db;
 
     protected function __construct() {
         parent::__construct();
         Singleton::__construct();
-        $this->db = SqlConnection::getInstance();
+        $this->db = DatabaseManager::getInstance();
     }
 
     /**

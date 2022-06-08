@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Bjercke\SqlConnection;
+use Bjercke\DatabaseManager;
 use Bjercke\Tile;
 use Bjercke\TileRenderer;
 
 class NewTileTile extends Tile {
 
     public function getTiles() {
-        $em = SqlConnection::getInstance()->getEntityManager();
+        $em = DatabaseManager::getInstance()->getEntityManager();
 
         return $em->getRepository(\Bjercke\Entity\Tile::class)->findBy([], ['id' => 'DESC']);
     }

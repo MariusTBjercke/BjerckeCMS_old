@@ -17,8 +17,9 @@ nav {
   }
 
   .top-logo {
-    background: url('../svg/logo.svg') no-repeat;
+    background: url('~@assets/svg/logo.svg') no-repeat;
     height: 40px;
+    max-width: 160px;
     background-size: contain;
     transition: filter 0.3s ease-in-out;
 
